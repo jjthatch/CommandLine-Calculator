@@ -105,12 +105,12 @@ public:
    * @param[in]       index                 Zero-based location
    * @return          Character at \index
    * @exception       std::out_of_range     Invalid index value
-   */  
+   */
   T get (size_t index) const;
 
-  /** 
+  /**
    * Set the character at the specified \a index. If the \a index is not
-   * within range of the array, then std::out_of_range exception is 
+   * within range of the array, then std::out_of_range exception is
    * thrown.
    *
    * @param[in]       index                 Zero-based location
@@ -126,7 +126,7 @@ public:
    * not initialized to anything. If \a new_size is the same as the current
    * size, then nothing happens.
    *
-   * The array's original contents are preserved regardless of whether the 
+   * The array's original contents are preserved regardless of whether the
    * array's size is either increased or decreased.
    *
    * @param[in]       new_size              New size of the array
@@ -186,7 +186,7 @@ public:
 
 private:
   /// Pointer to the actual data.
-  char * data_;
+  T data_;
 
   /// Current size of the array.
   size_t cur_size_;

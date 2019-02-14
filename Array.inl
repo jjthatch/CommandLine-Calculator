@@ -13,7 +13,7 @@ template <typename T>
 inline
 size_t Array <T>::size (void) const
 {
-
+  
 }
 
 //
