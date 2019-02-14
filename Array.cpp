@@ -33,6 +33,7 @@ Array <T>::Array (size_t length)
 template <typename T>
 Array <T>::Array (size_t length, T fill)
 {
+  int i = 0;
   data_ = new T;
   max_size_ = length;
   for (int i = 0; i < length; i++) {
@@ -173,6 +174,7 @@ void Array <T>::resize (size_t new_size)
 template  <typename T>
 int Array <T>::find (T value) const
 {
+  int found = 0;
   int intstart = 0;
   int index = -1;
   for (int i = 0; i < cur_size_; i++) {
@@ -198,11 +200,11 @@ int Array <T>::find (T val, size_t start) const
 
   // Validates input and finds the Index
   if (start >= cur_size_) {
-    throw std:out_of_rang("Index out of bounds of array");
+    throw std::out_of_range("Index out of bounds of array");
   }
   else {
     for (size_t i = start; i < (cur_size_ - start); i++) {
-      if ((ch == *(data_ + i)) && (found != 1)) {
+      if ((val == *(data_ + i)) && (found != 1)) {
         found = 1;
         index = i;
       }
@@ -220,6 +222,7 @@ bool Array <T>::operator == (const Array & rhs) const
   bool equality = true;
   if ((cur_size_ == rhs.size()) && (cur_size_ == rhs.max_size())) {
     equality = false;
+  }
   else {
     for (int i = 0; i < cur_size_; i++) {
       if (*(data_ + i) != rhs[i]) {
