@@ -25,6 +25,7 @@ Array <T>::Array (size_t length)
 {
   data_ = new T[length];
   max_size_ = length;
+  cur_size_ = length;
 }
 
 //
@@ -33,13 +34,14 @@ Array <T>::Array (size_t length)
 template <typename T>
 Array <T>::Array (size_t length, T fill)
 {
-  int i = 0;
-  data_ = new T;
+  int countsize = 0;
+  data_ = new T[length];
   max_size_ = length;
   for (int i = 0; i < length; i++) {
     *(data_ + i) = fill;
+    countsize++;
   }
-  cur_size_ = i;
+  cur_size_ = countsize;
 }
 
 //
@@ -67,7 +69,7 @@ Array <T>::Array (const Array & array)
 template <typename T>
 Array <T>::~Array (void)
 {
-  delete[] data_;
+  delete [] data_;
   data_ = nullptr;
 }
 
