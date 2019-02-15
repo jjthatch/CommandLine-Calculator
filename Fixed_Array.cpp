@@ -11,7 +11,9 @@
 template <typename T, size_t N>
 Fixed_Array <T, N>::Fixed_Array (void)
 {
-
+	data_ = new T[N];
+	max_size_ = N;
+	cur_size_ = 0;
 }
 
 //
@@ -20,7 +22,12 @@ Fixed_Array <T, N>::Fixed_Array (void)
 template <typename T, size_t N>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr)
 {
-	
+  // Only copies elements that have been initialized. Won't copy garbage data
+  this->cur_size_ = Fixed_Array.size();
+  this->max_size_ = Fixed_Array.max_size();
+  data_ = new T[Fixed_Array.max_size()];
+  for (int i = 0; i < this->cur_size; i++) {
+    *(data_ + i) = Fixed_Array.get(i);
 }
 
 //
@@ -30,7 +37,7 @@ template <typename T, size_t N>
 template <size_t M>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr)
 {
-	
+
 }
 
 //
@@ -56,7 +63,7 @@ Fixed_Array <T, N>::~Fixed_Array (void)
 template <typename T, size_t N>
 const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T, N> & rhs)
 {
-	
+
 }
 
 //

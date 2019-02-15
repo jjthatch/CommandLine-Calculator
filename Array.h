@@ -184,7 +184,7 @@ public:
    */
   void fill (T element);
 
-private:
+protected:
   /// Pointer to the actual data.
   T * data_;
 
