@@ -38,7 +38,7 @@ template <size_t M>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr)
 {
 	// Chooses the larger of the sizes given and sets maxsize.
-	if (M > N) {
+	if (M < N) {
 		this->max_size_ = M;
 		this->data_ = new T[M];
 		this->cur_size_ = 0; // Not a copy, so, no elements initialized yet!
@@ -96,6 +96,9 @@ const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T,
 	delete[] data_;
   this->data_ = rhs;
 	this->cur_size = rhs.size();
-	this->max_size = M;
+	if (M != N) {
+		throw std::invalid_argument
+		std::cout << "Invalid operation, fixed arrays are not the same size"
+	}
   return * this;
 }
