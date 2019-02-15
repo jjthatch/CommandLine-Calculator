@@ -14,6 +14,7 @@
 #define _CS507_STACK_H_
 
 #include <exception>
+#include "Array.h"
 
 /**
  * @class Stack
@@ -81,7 +82,7 @@ public:
   void pop (void);
 
   /**
-   * Get the top-most element on the stack. If there are no element 
+   * Get the top-most element on the stack. If there are no element
    * on the stack, then the stack_is_empty exception is thrown.
    *
    * @return         Element on top of the stack.

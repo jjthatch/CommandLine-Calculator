@@ -193,6 +193,12 @@ protected:
 
   /// Maximum size of the array.
   size_t max_size_;
+
+private:
+  // Methods unique to Array base class
+
+  // resize method not needed in base class
+
 };
 
 #include "Array.inl"
