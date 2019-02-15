@@ -37,7 +37,17 @@ template <typename T, size_t N>
 template <size_t M>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr)
 {
-
+	// Chooses the larger of the sizes given and sets maxsize.
+	if (M > N) {
+		this->max_size_ = M;
+		this->data_ = new T[M];
+		this->cur_size_ = 0; // Not a copy, so, no elements initialized yet!
+	}
+	else {
+		this->max_size_ = N;
+		this->data_ = new T[N];
+		this->cur_size_ = 0;
+	}
 }
 
 //
@@ -46,6 +56,12 @@ Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr)
 template <typename T, size_t N>
 Fixed_Array <T, N>::Fixed_Array (T fill)
 {
+	this->data_ = new T[N];
+	this->max_size_ = N;
+	this->cur_size_ = N;
+	for (int i = 0; i < N; i ++) {
+		*(data_ + i) = Fixed_Array.get(i);
+	}
 }
 
 //
