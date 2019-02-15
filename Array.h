@@ -120,20 +120,6 @@ public:
   void set (size_t index, T value);
 
   /**
-   * Set a new size for the array. If \a new_size is less than the current
-   * size, then the array is truncated. If \a new_size if greater then the
-   * current size, then the array is made larger and the new elements are
-   * not initialized to anything. If \a new_size is the same as the current
-   * size, then nothing happens.
-   *
-   * The array's original contents are preserved regardless of whether the
-   * array's size is either increased or decreased.
-   *
-   * @param[in]       new_size              New size of the array
-   */
-  void resize (size_t new_size);
-
-  /**
    * Locate the specified character in the array. The index of the first
    * occurrence of the character is returned. If the character is not
    * found in the array, then -1 is returned.
