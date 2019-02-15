@@ -70,7 +70,8 @@ Fixed_Array <T, N>::Fixed_Array (T fill)
 template <typename T, size_t N>
 Fixed_Array <T, N>::~Fixed_Array (void)
 {
-
+	delete [] this->data_;
+	this->data_ = nulllptr;
 }
 
 //
@@ -79,7 +80,10 @@ Fixed_Array <T, N>::~Fixed_Array (void)
 template <typename T, size_t N>
 const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T, N> & rhs)
 {
-
+	delete[] this->data_;
+  this->data_ = rhs;
+	this->cur_size_ = Fixed_Array.size();
+  return * this;
 }
 
 //
@@ -89,5 +93,9 @@ template <typename T, size_t N>
 template <size_t M>
 const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T, M> & rhs)
 {
-
+	delete[] data_;
+  this->data_ = rhs;
+	this->cur_size = rhs.size();
+	this->max_size = M;
+  return * this;
 }
