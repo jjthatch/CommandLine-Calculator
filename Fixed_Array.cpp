@@ -28,6 +28,7 @@ Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr)
   this->data_ = new T[arr.max_size()];
   for (int i = 0; i < this->cur_size; i++) {
     *(this->data_ + i) = arr.get(i);
+	}
 }
 
 //
