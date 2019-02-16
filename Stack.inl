@@ -13,7 +13,7 @@ template <typename T>
 inline
 size_t Stack <T>::size (void) const
 {
-  return cur_size_;
+  return this->cur_size_;
 }
 
 //
@@ -23,7 +23,7 @@ template <typename T>
 inline
 T Stack <T>::top (void) const
 {
-  return cur_size_;
+  return this->cur_size_;
 }
 
 //

@@ -21,9 +21,10 @@ template <typename T>
 Stack <T>::Stack (const Stack & stack)
 {
   this->cur_size_ = stack.size();
-  this->data_ = new T[];
+  this->data_ = new T;
   for (int i = 0; i < this->cur_size_; i++) {
     *(this->data_ + i) = stack[i];
+  }
 }
 
 //
