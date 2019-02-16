@@ -61,7 +61,7 @@ Fixed_Array <T, N>::Fixed_Array (T fill)
 	this->max_size_ = N;
 	this->cur_size_ = N;
 	for (int i = 0; i < N; i ++) {
-		*(this->data_ + i) = Fixed_Array.get(i);
+		*(this->data_ + i) = fill;
 	}
 }
 
@@ -83,7 +83,7 @@ const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T,
 {
 	delete[] this->data_;
   this->data_ = rhs;
-	this->cur_size_ = Fixed_Array.size();
+	this->cur_size_ = rhs.size();
   return * this;
 }
 
