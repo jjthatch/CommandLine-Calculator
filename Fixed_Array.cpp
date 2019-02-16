@@ -23,11 +23,11 @@ template <typename T, size_t N>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr)
 {
   // Only copies elements that have been initialized. Won't copy garbage data
-  this->cur_size_ = Fixed_Array.size();
-  this->max_size_ = Fixed_Array.max_size();
-  this->data_ = new T[Fixed_Array.max_size()];
+  this->cur_size_ = arr.size();
+  this->max_size_ = arr.max_size();
+  this->data_ = new T[arr.max_size()];
   for (int i = 0; i < this->cur_size; i++) {
-    *(this->data_ + i) = Fixed_Array.get(i);
+    *(this->data_ + i) = arr.get(i);
 }
 
 //
