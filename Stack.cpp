@@ -11,7 +11,7 @@
 template <typename T>
 Stack <T>::Stack (void)
 {
-  data_ = new T;
+  this->data_ = new T;
 }
 
 //
@@ -21,9 +21,9 @@ template <typename T>
 Stack <T>::Stack (const Stack & stack)
 {
   this->cur_size_ = stack.size();
-  data_ = new T[];
+  this->data_ = new T[];
   for (int i = 0; i < this->cur_size_; i++) {
-    *(data_ + i) = array[i];
+    *(this->data_ + i) = stack[i];
 }
 
 //
@@ -32,9 +32,9 @@ Stack <T>::Stack (const Stack & stack)
 template <typename T>
 Stack <T>::~Stack (void)
 {
-  if (data_ != nullptr) {
-    delete  data_;
-    data_ = nullptr;
+  if (this->data_ != nullptr) {
+    delete  this->data_;
+    this->data_ = nullptr;
   }
 }
 
@@ -44,8 +44,8 @@ Stack <T>::~Stack (void)
 template <typename T>
 void Stack <T>::push (T element)
 {
-  this.set(this->cur_size_ - 1, element);
-  cur_size_ = cur_size_ + 1;
+  this->set(this->cur_size_ - 1, element);
+  this->cur_size_ = this->cur_size_ + 1;
 }
 
 //
@@ -54,8 +54,8 @@ void Stack <T>::push (T element)
 template <typename T>
 void Stack <T>::pop (void)
 {
-  delete (data_ + cur_size_);
-  cur_size_ = cur_size_ - 1;
+  delete (this->data_ + this->cur_size_);
+  this->cur_size_ = this->cur_size_ - 1;
 }
 
 //
@@ -65,9 +65,9 @@ template <typename T>
 const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 {
   this->cur_size_ = stack.size();
-  data_ = new T;
+  this->data_ = new T;
   for (int i = 0; i < this->cur_size_; i++) {
-    *(data_ + i) = array[i];
+    *(this->data_ + i) = rhs[i];
 }
 
 //
@@ -76,7 +76,7 @@ const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 template <typename T>
 void Stack <T>::clear (void)
 {
-  for (int i = 0; i < cur_size_; i++) {
-    delete (data_ + i);
+  for (int i = 0; i < this->cur_size_; i++) {
+    delete (this->data_ + i);
   }
 }
