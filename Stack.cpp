@@ -34,6 +34,7 @@ Stack <T>::~Stack (void)
 {
   if (data_ != nullptr) {
     delete  data_;
+    data_ = nullptr;
   }
 }
 
@@ -43,7 +44,8 @@ Stack <T>::~Stack (void)
 template <typename T>
 void Stack <T>::push (T element)
 {
-
+  this.set(this->cur_size_ - 1, element);
+  cur_size_ = cur_size_ + 1;
 }
 
 //
@@ -52,7 +54,8 @@ void Stack <T>::push (T element)
 template <typename T>
 void Stack <T>::pop (void)
 {
-
+  delete (data_ + cur_size_); 
+  cur_size_ = cur_size_ - 1;
 }
 
 //
