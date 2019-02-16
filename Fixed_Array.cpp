@@ -93,12 +93,11 @@ template <typename T, size_t N>
 template <size_t M>
 const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T, M> & rhs)
 {
-	delete[] data_;
-  this->data_ = rhs;
-	this->cur_size = rhs.size();
 	if (M != N) {
-		throw std::invalid_argument
-		std::cout << "Invalid operation, fixed arrays are not the same size"
+		throw std::invalid_argument("Invalid operation, arrays are not the same size");
 	}
+	delete[] data_;
+	this->data_ = rhs;
+	this->cur_size = rhs.size();
   return * this;
 }
