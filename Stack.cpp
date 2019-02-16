@@ -11,7 +11,7 @@
 template <typename T>
 Stack <T>::Stack (void)
 {
-
+  data_ = nullptr;
 }
 
 //
@@ -20,7 +20,10 @@ Stack <T>::Stack (void)
 template <typename T>
 Stack <T>::Stack (const Stack & stack)
 {
-
+  this->cur_size_ = stack.size();
+  data_ = new T[this->cur_size_];
+  for (int i = 0; i < this->cur_size_; i++) {
+    *(data_ + i) = array[i];
 }
 
 //
