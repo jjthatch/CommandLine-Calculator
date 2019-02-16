@@ -1,4 +1,6 @@
 #include "Array.h"
+#include "Stack.h"
+#include "Fixed_Array.h"
 #include <iostream>
 
 int main (int argc, char * argv [])
