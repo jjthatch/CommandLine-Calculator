@@ -3,7 +3,7 @@
 project (assignment2) {
   exename = assignment2
   install = .
- 
+
   specific (make, gnuace) {
     compile_flags += -std=c++11
   }
@@ -15,5 +15,6 @@ project (assignment2) {
   Template_Files {
     Fixed_Array.cpp
     Stack.cpp
+    Queue.cpp
   }
 }
