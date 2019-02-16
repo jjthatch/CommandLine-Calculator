@@ -11,9 +11,9 @@
 template <typename T, size_t N>
 Fixed_Array <T, N>::Fixed_Array (void)
 {
-	data_ = new T[N];
-	max_size_ = N;
-	cur_size_ = 0;
+	this->data_ = new T[N];
+	this->max_size_ = N;
+	this->cur_size_ = 0;
 }
 
 //
@@ -25,9 +25,9 @@ Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr)
   // Only copies elements that have been initialized. Won't copy garbage data
   this->cur_size_ = Fixed_Array.size();
   this->max_size_ = Fixed_Array.max_size();
-  data_ = new T[Fixed_Array.max_size()];
+  this->data_ = new T[Fixed_Array.max_size()];
   for (int i = 0; i < this->cur_size; i++) {
-    *(data_ + i) = Fixed_Array.get(i);
+    *(this->data_ + i) = Fixed_Array.get(i);
 }
 
 //
@@ -60,7 +60,7 @@ Fixed_Array <T, N>::Fixed_Array (T fill)
 	this->max_size_ = N;
 	this->cur_size_ = N;
 	for (int i = 0; i < N; i ++) {
-		*(data_ + i) = Fixed_Array.get(i);
+		*(this->data_ + i) = Fixed_Array.get(i);
 	}
 }
 
@@ -71,7 +71,7 @@ template <typename T, size_t N>
 Fixed_Array <T, N>::~Fixed_Array (void)
 {
 	delete [] this->data_;
-	this->data_ = nulllptr;
+	this->data_ = nullptr;
 }
 
 //
@@ -96,7 +96,7 @@ const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T,
 	if (M != N) {
 		throw std::invalid_argument("Invalid operation, arrays are not the same size");
 	}
-	delete[] data_;
+	delete[] this->data_;
 	this->data_ = rhs;
 	this->cur_size = rhs.size();
   return * this;
