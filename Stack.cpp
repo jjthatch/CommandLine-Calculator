@@ -21,7 +21,7 @@ template <typename T>
 Stack <T>::Stack (const Stack & stack)
 {
   this->cur_size_ = stack.size();
-  data_ = new T[this->cur_size_];
+  data_ = new T[];
   for (int i = 0; i < this->cur_size_; i++) {
     *(data_ + i) = array[i];
 }
@@ -54,7 +54,7 @@ void Stack <T>::push (T element)
 template <typename T>
 void Stack <T>::pop (void)
 {
-  delete (data_ + cur_size_); 
+  delete (data_ + cur_size_);
   cur_size_ = cur_size_ - 1;
 }
 
@@ -64,7 +64,10 @@ void Stack <T>::pop (void)
 template <typename T>
 const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 {
-
+  this->cur_size_ = stack.size();
+  data_ = new T;
+  for (int i = 0; i < this->cur_size_; i++) {
+    *(data_ + i) = array[i];
 }
 
 //
@@ -73,5 +76,7 @@ const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 template <typename T>
 void Stack <T>::clear (void)
 {
-
+  for (int i = 0; i < cur_size_; i++) {
+    delete (data_ + i);
+  }
 }
