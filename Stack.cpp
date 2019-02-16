@@ -11,7 +11,7 @@
 template <typename T>
 Stack <T>::Stack (void)
 {
-  data_ = nullptr;
+  data_ = new T;
 }
 
 //
@@ -32,7 +32,9 @@ Stack <T>::Stack (const Stack & stack)
 template <typename T>
 Stack <T>::~Stack (void)
 {
-
+  if (data_ != nullptr) {
+    delete  data_;
+  }
 }
 
 //
