@@ -65,10 +65,11 @@ void Stack <T>::pop (void)
 template <typename T>
 const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 {
-  this->cur_size_ = stack.size();
+  this->cur_size_ = rhs.size();
   this->data_ = new T;
   for (int i = 0; i < this->cur_size_; i++) {
     *(this->data_ + i) = rhs[i];
+  }
 }
 
 //
