@@ -139,6 +139,36 @@ void Array <T>::set (size_t index, T value)
   }
 }
 
+//
+// resize
+//
+template <typename T>
+void Array <T>::resize (size_t new_size)
+{
+  // When the array lengthens, max size changes only
+  if (new_size > max_size_) {
+    Array newarray(new_size);
+    for (int i = 0; i < new_size; i++) {
+      newarray[i] = *(data_ + i);
+    }
+    this->max_size_ = new_size;
+    delete [] data_;
+    data_ = newarray;
+  }
+  // If the array shrinks below cur_size_ then cur has to shrink as well
+  else if (new_size < max_size_) {
+    Array newarray(new_size);
+    this->max_size_ = new_size;
+    if (new_size < cur_size_) {
+      this->cur_size_ = new_size;
+    }
+    for (int i = 0; i < max_size_; i++) {
+      newarray[i] = *(data_ + i);
+      delete [] data_;
+      data_ = newarray;
+    }
+  }
+}
 
 //
 // find (char)
