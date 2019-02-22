@@ -14,7 +14,7 @@
  * @class Fixed_Array
  *
  * Implementation of a fixed size array, i.e., one that is not
- * resizeable. It is derived from Array so it can inherit of 
+ * resizeable. It is derived from Array so it can inherit of
  * the Array class's methods.
  */
 template <typename T, size_t N>
@@ -30,7 +30,7 @@ public:
 	 * @param[in]      arr        Source array
 	 */
   Fixed_Array (const Fixed_Array <T, N> & arr);
-	
+
   /**
    * Initializing constructor. The source array can be of any size
    * as long as they are of the same type.
@@ -41,7 +41,7 @@ public:
   Fixed_Array (const Fixed_Array <T, M> & arr);
 
   /**
-   * Initializing constructor. Fills the contents of the 
+   * Initializing constructor. Fills the contents of the
    * array with the specified \a fill value.
    *
    * @param[in]      fill       The file value.
@@ -65,6 +65,17 @@ public:
    */
   template <size_t M>
   const Fixed_Array & operator = (const Fixed_Array <T, M> & rhs);
+
+  /**
+   * Set the character at the specified \a index. If the \a index is not
+   * within range of the array, then std::out_of_range exception is
+   * thrown.
+   *
+   * @param[in]       index                 Zero-based location
+   * @param[in]       value                 New value for character
+   * @exception       std::out_of_range     Invalid \a index value
+   */
+  void set (size_t index, T value);
 };
 
 // include the inline files
