@@ -22,7 +22,7 @@
  * Basic stack for abitrary elements.
  */
 template <typename T>
-class Stack : public Array <T>
+class Stack : public Array_Base <T>
 {
 public:
   /// Type definition of the type.

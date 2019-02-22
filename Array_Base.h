@@ -1,8 +1,7 @@
 #ifndef ARRAY_BASE_H
 #define ARRAY_BASE_H
 
-#include "Array_Base.cpp"
-#include "Array.inl"
+#include <cstring>
 
 template <typename T>
 class Array_Base {
@@ -12,14 +11,14 @@ public:
   typedef T type;
 
   /// Default constructor.
-  Array (void);
+  Array_Base (void);
 
   /**
    * Initializing constructor.
    *
    * @param[in]      length        Initial size
    */
-  Array (size_t length);
+  Array_Base (size_t length);
 
   /**
    * Initializing constructor.
@@ -27,17 +26,17 @@ public:
    * @param[in]      length        Initial size
    * @param[in]      fill          Initial value for each element
    */
-  Array (size_t length, T fill);
+  Array_Base (size_t length, T fill);
 
   /**
    * Copy constructor
    *
    * @param[in]     arr         The source array.
    */
-  Array (const Array & arr);
+  Array_Base (const Array_Base & arr);
 
   /// Destructor.
-  ~Array (void);
+  ~Array_Base (void);
 
   /// Public methods
 
@@ -47,7 +46,7 @@ public:
    * @param[in]       rhs      Right-hand side of equal sign
    * @return          Reference to self
    */
-  const Array & operator = (const Array & rhs);
+  const Array_Base & operator = (const Array_Base & rhs);
 
   /**
    * Retrieve the current size of the array.
@@ -113,7 +112,7 @@ public:
    * @retval          true                 Left side is equal to right side
    * @retval          false                Left side is not equal to right side
    */
-  bool operator == (const Array & rhs) const;
+  bool operator == (const Array_Base & rhs) const;
 
   /**
    * Test the array for inequality.
@@ -122,7 +121,7 @@ public:
    * @retval          true                 Left side is not equal to right side
    * @retval          false                Left size is equal to right side
    */
-  bool operator != (const Array & rhs) const;
+  bool operator != (const Array_Base & rhs) const;
 
   /**
    * Fill the contents of the array.
@@ -139,7 +138,8 @@ protected:
 
   /// Maximum size of the array.
   size_t max_size_;
-}
-
+};
+#include "Array_Base.cpp"
+#include "Array.inl"
 
 #endif

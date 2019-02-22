@@ -17,6 +17,7 @@
 #ifndef _ARRAY_H_
 #define _ARRAY_H_
 
+
 #include <cstring>          // for size_t definition
 
 /**
@@ -25,7 +26,7 @@
  * Basic implementation of a standard array class for chars.
  */
 template <typename T>
-class Array
+class Array : public Array_Base <T>
 {
 public:
   /// Type definition of the element type.
@@ -110,5 +111,4 @@ private:
 };
 
 #include "Array.cpp"
-
 #endif   // !defined _ARRAY_H_
