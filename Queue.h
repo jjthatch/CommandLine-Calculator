@@ -33,6 +33,8 @@ public:
 private:
   // Allows for resizing
   void bigger(void);
+  size_t inbound;
+  size_t outbound;
 };
 
 #include "Queue.cpp"

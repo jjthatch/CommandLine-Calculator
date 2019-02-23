@@ -6,14 +6,22 @@
 template <typename T>
 Queue <T>::Queue(void) 
 {
-  this->max_size_ = 10;
+  this->max_size_ = 10; // tracks output position for queue 
+  inbound = 0; // Tracks input position for queue
+  outbound = 0; // Tracks output position for the queue
   this->data_ = new T[this->max_size_];
 }
 
 /// Copy Constructor
 Queue <T>::Queue(const Queue & s)
 {
-
+  this->cur_size_ = s->size();
+  this->max_size_ = s->max_size();
+  this->data_ = new T[s->max_size()];
+  for (int i = 0; i < s->size(); i++) 
+    {
+      *(this->data + i) = s->get(i); 
+    }
 }
 
 /// Adds elements
@@ -22,15 +30,17 @@ void Queue<T>::enqueue(T element)
 {
   if (size() == this->max_size_)
   {
-     
+    this->bigger();
   }
+  *(this->data_ + inbound) = element;\
+  inbound++;
 }
 
 /// Removes element
 template <typename T>
 void Queue<T>::dequeue(void)
 {
-  // Do A thing
+ 
 }
 
 /// Checks if queue is empty
@@ -70,5 +80,11 @@ void Queue<T>::bigger(void) {
 template <typename T>
 const Queue & Queue<T>::operator = (const Queue & rhs)
 {
-
+  this->cur_size_ = s->size();
+  this->max_size_ = s->max_size();
+  this->data_ = new T[s->max_size()];
+  for (int i = 0; i < s->size(); i++) 
+    {
+      *(this->data + i) = s->get(i); 
+    }
 }
