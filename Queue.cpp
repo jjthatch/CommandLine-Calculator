@@ -13,6 +13,7 @@ Queue <T>::Queue(void)
 }
 
 /// Copy Constructor
+template <typename T>
 Queue <T>::Queue(const Queue & s)
 {
   this->cur_size_ = s->size();
@@ -40,7 +41,7 @@ void Queue<T>::enqueue(T element)
 template <typename T>
 void Queue<T>::dequeue(void)
 {
- 
+  // What is a thing?
 }
 
 /// Checks if queue is empty
@@ -54,7 +55,7 @@ bool Queue<T>::is_empty(void)
 template <typename T>
 int size(void)
 {
-  // Do A thing
+  // Do The thign
 }
 
 /// Removes all values from the queue
@@ -76,7 +77,7 @@ void Queue<T>::bigger(void) {
   delete [] this->data_;
   this->data_ = temp;
 }
-
+/*
 template <typename T>
 const Queue & Queue<T>::operator = (const Queue & rhs)
 {
@@ -88,3 +89,4 @@ const Queue & Queue<T>::operator = (const Queue & rhs)
       *(this->data + i) = s->get(i); 
     }
 }
+*/
