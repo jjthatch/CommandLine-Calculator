@@ -18,7 +18,7 @@
  * the Array class's methods.
  */
 template <typename T, size_t N>
-class Fixed_Array : public Array <T>
+class Fixed_Array : public Array_Base <T>
 {
 public:
   /// Default constructor.

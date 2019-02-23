@@ -3,15 +3,23 @@
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
 
-#include "Array.h"
-#include "Queue.cpp"
+#include "Array_Base.h"
 
 template <typename T>
-class Queue : public Array <T>
+class Queue : public Array_Base <T>
 {
 public:
   // Default constructor
   Queue (void);
+
+  // Copy Consturctor
+  Queue(const Queue & s);
+
+  // Destructor
+  ~Queue(void);
+  
+  // Assignment =
+  const Queue & operator = (const Queue & rhs);
 
   void enqueue(T element);
 
@@ -22,9 +30,11 @@ public:
   int size(void);
 
   void clear(void);
+private:
+  // Allows for resizing
+  void bigger(void);
+};
 
-}
-
-
+#include "Queue.cpp"
 
 #endif
