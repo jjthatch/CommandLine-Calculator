@@ -77,7 +77,7 @@ void Queue<T>::bigger(void) {
   delete [] this->data_;
   this->data_ = temp;
 }
-/*
+
 template <typename T>
 const Queue & Queue<T>::operator = (const Queue & rhs)
 {
@@ -89,4 +89,4 @@ const Queue & Queue<T>::operator = (const Queue & rhs)
       *(this->data + i) = s->get(i); 
     }
 }
-*/
+
