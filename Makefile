@@ -7,7 +7,7 @@
 # this file will be lost the next time it is generated.
 #
 # MPC Command:
-# /home/jjthatch/MPC/mwc.pl -type Make
+# /home/jjthatch/MPC/mwc.pl -type make
 #
 #----------------------------------------------------------------------------
 

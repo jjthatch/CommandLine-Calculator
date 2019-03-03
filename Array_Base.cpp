@@ -34,7 +34,7 @@ Array_Base <T>::Array_Base (size_t length, T fill)
 
 // Copy Constructor
 template <typename T>
-Array_Base <T>::Array_Base (const Array & array)
+Array_Base <T>::Array_Base (const Array_Base & array)
 {
   if (array.data_ == nullptr) {
     this->data_ = nullptr;
@@ -61,13 +61,19 @@ Array_Base <T>::~Array_Base (void)
 
 // Operator = overload
 template <typename T>
-const Array_Base <T> & Array_Base <T>::operator = (const Array_Base & rhs)
+const Array_Base<T> & Array_Base <T>::operator = (const Array_Base & rhs)
 {
   delete[] data_;
   this->data_ = rhs.data_;
   return * this;
 }
 
+// operator [] overload
+template <typename T>
+const T & Array_Base<T>::operator [] (size_t index) const
+{
+  
+}
 
 // find (value)
 template  <typename T>
@@ -112,7 +118,7 @@ int Array_Base <T>::find (T val, size_t start) const
 
 /// Operator == overload
 template <typename T>
-bool Array <T>::operator == (const Array & rhs) const
+bool Array_Base <T>::operator == (const Array_Base & rhs) const
 {
   bool equality = true;
   if ((cur_size_ == rhs.size()) && (cur_size_ == rhs.max_size())) {
@@ -129,7 +135,7 @@ bool Array <T>::operator == (const Array & rhs) const
 
 /// operator != overload
 template <typename T>
-bool Array <T>::operator != (const Array & rhs) const
+bool Array_Base <T>::operator != (const Array_Base & rhs) const
 {
   if ((cur_size_ != rhs.cur_size_) || (max_size_ != rhs.max_size)) {
     return true;

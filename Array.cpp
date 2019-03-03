@@ -14,7 +14,7 @@
 template <typename T>
 Array <T>::Array (void)
 {
-  data_ = nullptr;
+  this->data_ = nullptr;
 }
 
 //
@@ -23,9 +23,9 @@ Array <T>::Array (void)
 template <typename T>
 Array <T>::Array (size_t length)
 {
-  data_ = new T[length];
-  max_size_ = length;
-  cur_size_ = length;
+  this->data_ = new T[length];
+  this->max_size_ = length;
+  this->cur_size_ = length;
 }
 
 //
@@ -35,13 +35,13 @@ template <typename T>
 Array <T>::Array (size_t length, T fill)
 {
   int countsize = 0;
-  data_ = new T[length];
-  max_size_ = length;
+  this->data_ = new T[length];
+  this->max_size_ = length;
   for (int i = 0; i < length; i++) {
-    *(data_ + i) = fill;
+    *(this->data_ + i) = fill;
     countsize++;
   }
-  cur_size_ = countsize;
+  this->cur_size_ = countsize;
 }
 
 //
@@ -56,9 +56,9 @@ Array <T>::Array (const Array & array)
   else {
     this->cur_size_ = array.size();
     this->max_size_ = array.max_size();
-    data_ = new T[this->max_size_];
+    this->data_ = new T[this->max_size_];
     for (int i = 0; i < this->max_size_; i++) {
-      *(data_ + i) = array[i];
+      *(this->data_ + i) = array[i];
     }
   }
 }
@@ -70,21 +70,37 @@ Array <T>::Array (const Array & array)
 template <typename T>
 Array <T>::~Array (void)
 {
+<<<<<<< HEAD
   delete [] data_;
   data_ = nullptr;
 }
 
+=======
+  delete [] this->data_;
+  this->data_ = nullptr;
+}
+>>>>>>> cfb49baea81766e8070e594259148cc96065e180
 
 //
 // operator [] modifiable
 //
 template <typename T>
+<<<<<<< HEAD
 T & Array <T>::operator [] (size_t index){
   if ((index < 0) || (index >= cur_size_)) {
     throw(std::out_of_range("Index is out of bounds"));
   }
   else {
     return *(data_ + index);
+=======
+T & Array <T>::operator [] (size_t index)
+{
+  if ((index < 0) || (index >= this->cur_size_)) {
+    throw(std::out_of_range("Index is out of bounds"));
+  }
+  else {
+    return *(this->data_ + index);
+>>>>>>> cfb49baea81766e8070e594259148cc96065e180
   }
 }
 
@@ -95,11 +111,11 @@ T & Array <T>::operator [] (size_t index){
 template <typename T>
 void Array <T>::set (size_t index, T value)
 {
-  if ((index < 0) || (index >= cur_size_)) {
+  if ((index < 0) || (index >= this->cur_size_)) {
     throw(std::out_of_range("Index is out of bounds"));
   }
   else {
-    *(data_ + index) = value;
+    *(this->data_ + index) = value;
   }
 }
 
@@ -110,39 +126,49 @@ template <typename T>
 void Array <T>::resize (size_t new_size)
 {
   // When the array lengthens, max size changes only
-  if (new_size > max_size_) {
+  if (new_size > this->max_size_) {
     Array newarray(new_size);
     for (int i = 0; i < new_size; i++) {
-      newarray[i] = *(data_ + i);
+      newarray[i] = *(this->data_ + i);
     }
     this->max_size_ = new_size;
-    delete [] data_;
-    data_ = newarray;
+    delete [] this->data_;
+    this->data_ = newarray;
   }
   // If the array shrinks below cur_size_ then cur has to shrink as well
-  else if (new_size < max_size_) {
+  else if (new_size < this->max_size_) {
     Array newarray(new_size);
     this->max_size_ = new_size;
-    if (new_size < cur_size_) {
+    if (new_size < this->cur_size_) {
       this->cur_size_ = new_size;
     }
+<<<<<<< HEAD
     for (int i = 0; i < max_size_; i++) {
       newarray[i] = *(data_ + i);
       delete [] data_;
       data_ = newarray;
+=======
+    for (int i = 0; i < this->max_size_; i++) {
+      newarray[i] = *(this->data_ + i);
+      delete [] this->data_;
+      this->data_ = newarray;
+>>>>>>> cfb49baea81766e8070e594259148cc96065e180
     }
   }
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> cfb49baea81766e8070e594259148cc96065e180
 //
 // fill
 //
 template <typename T>
 void Array <T>::fill (T value)
 {
-  for (int i = 0; i < max_size_; i++) {
-    *(data_ + i) = value;
+  for (int i = 0; i < this->max_size_; i++) {
+    *(this->data_ + i) = value;
   }
 }
