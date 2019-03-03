@@ -8,6 +8,10 @@
 #include "Array.h"
 #include <stdexcept>         // for std::out_of_bounds exception
 
+/*
+  CONSTRUCTORs
+*/
+
 //
 // Array
 //
@@ -66,58 +70,16 @@ Array <T>::Array (const Array & array)
 //
 // ~Array
 //
-
 template <typename T>
 Array <T>::~Array (void)
 {
-<<<<<<< HEAD
-  delete [] data_;
-  data_ = nullptr;
-}
-
-=======
   delete [] this->data_;
   this->data_ = nullptr;
 }
->>>>>>> cfb49baea81766e8070e594259148cc96065e180
 
-//
-// operator [] modifiable
-//
-template <typename T>
-<<<<<<< HEAD
-T & Array <T>::operator [] (size_t index){
-  if ((index < 0) || (index >= cur_size_)) {
-    throw(std::out_of_range("Index is out of bounds"));
-  }
-  else {
-    return *(data_ + index);
-=======
-T & Array <T>::operator [] (size_t index)
-{
-  if ((index < 0) || (index >= this->cur_size_)) {
-    throw(std::out_of_range("Index is out of bounds"));
-  }
-  else {
-    return *(this->data_ + index);
->>>>>>> cfb49baea81766e8070e594259148cc96065e180
-  }
-}
-
-
-//
-// set
-//
-template <typename T>
-void Array <T>::set (size_t index, T value)
-{
-  if ((index < 0) || (index >= this->cur_size_)) {
-    throw(std::out_of_range("Index is out of bounds"));
-  }
-  else {
-    *(this->data_ + index) = value;
-  }
-}
+/*
+  METHODS
+*/
 
 //
 // resize
@@ -126,7 +88,7 @@ template <typename T>
 void Array <T>::resize (size_t new_size)
 {
   // When the array lengthens, max size changes only
-  if (new_size > this->max_size_) {
+  if (new_size >= this->max_size_) {
     Array newarray(new_size);
     for (int i = 0; i < new_size; i++) {
       newarray[i] = *(this->data_ + i);
@@ -142,33 +104,17 @@ void Array <T>::resize (size_t new_size)
     if (new_size < this->cur_size_) {
       this->cur_size_ = new_size;
     }
-<<<<<<< HEAD
-    for (int i = 0; i < max_size_; i++) {
-      newarray[i] = *(data_ + i);
-      delete [] data_;
-      data_ = newarray;
-=======
     for (int i = 0; i < this->max_size_; i++) {
       newarray[i] = *(this->data_ + i);
       delete [] this->data_;
       this->data_ = newarray;
->>>>>>> cfb49baea81766e8070e594259148cc96065e180
     }
   }
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> cfb49baea81766e8070e594259148cc96065e180
 //
-// fill
+// shrink
 //
-template <typename T>
-void Array <T>::fill (T value)
-{
-  for (int i = 0; i < this->max_size_; i++) {
-    *(this->data_ + i) = value;
+  void shrink () {
+
   }
-}

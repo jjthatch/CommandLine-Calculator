@@ -61,27 +61,6 @@ public:
   ~Array (void);
 
   /**
-   * Assignment operation
-   *
-   * @param[in]       rhs      Right-hand side of equal sign
-   * @return          Reference to self
-   */
-
-
-  T & operator [] (size_t index);
-
-  /**
-   * Set the character at the specified \a index. If the \a index is not
-   * within range of the array, then std::out_of_range exception is
-   * thrown.
-   *
-   * @param[in]       index                 Zero-based location
-   * @param[in]       value                 New value for character
-   * @exception       std::out_of_range     Invalid \a index value
-   */
-  void set (size_t index, T value);
-
-  /**
    * Set a new size for the array. If \a new_size is less than the current
    * size, then the array is truncated. If \a new_size if greater then the
    * current size, then the array is made larger and the new elements are
@@ -95,18 +74,12 @@ public:
    */
   void resize (size_t new_size);
 
-  /**
-   * Fill the contents of the array.
-   *
-   * @param[in]       ch                   Fill character
-   */
-  void fill (T element);
+  /// Shrink the array to reclaim unused space.
+  void shrink ();
 
 
 private:
   // Methods unique to Array base class
-
-  // resize method not needed in base class
 
 };
 
