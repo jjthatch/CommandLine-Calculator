@@ -38,23 +38,6 @@ public:
   /// Destructor.
   ~Array_Base (void);
 
-  /// Public methods
-
-  /**
-   * Assignment operation
-   *
-   * @param[in]       rhs      Right-hand side of equal sign
-   * @return          Reference to self
-   */
-  const Array_Base & operator = (const Array_Base & rhs);
-
-  /**
-   * Retrieve the current size of the array.
-   *
-   * @return          The current size
-   */
-  size_t size (void) const;
-
   /**
    * Retrieve the maximum size of the array.
    *
@@ -63,11 +46,11 @@ public:
   size_t max_size (void) const;
 
   /**
-   * @overload
+   * Retrieve the current size of the array.
    *
-   * The returned character is not modifiable.
+   * @return          The current size
    */
-  const T & operator [] (size_t index) const;
+  size_t size (void) const;
 
   /**
    * Get the character at the specified index. If the \a index is not within
@@ -106,6 +89,57 @@ public:
   int find (T element, size_t start) const;
 
   /**
+   * Set the character at the specified \a index. If the \a index is not
+   * within range of the array, then std::out_of_range exception is
+   * thrown.
+   *
+   * @param[in]       index                 Zero-based location
+   * @param[in]       value                 New value for character
+   * @exception       std::out_of_range     Invalid \a index value
+   */
+  void set (size_t index, T value);
+
+  /**
+   * Fill the contents of the array.
+   *
+   * @param[in]       ch                   Fill character
+   */
+  void fill (T element);
+
+  /**
+   * Assignment operation
+   *
+   * @param[in]       rhs      Right-hand side of equal sign
+   * @return          Reference to self
+   */
+
+   /// Reverse the contents of the array such that the first element is now
+  /// the last element and the last element is the first element.
+
+  void reverse (void);
+
+  /**
+   * The slice() method returns a shallow copy of a portion of an array into
+   * a new array object selected from begin to end (end not included). The original
+   * array will not be modified.
+   *
+   * @param[in]       begin           The starting index
+   * @return          A new Array object
+   */
+  Array slice (size_t begin) const;
+
+  /**
+   * @overload
+   *
+   * @param[in]       begin           The starting index
+   * @param[in]       end             The ending index
+   * @return          A new Array object
+   */
+  Array slice (size_t begin, size_t end) const;
+
+  const Array_Base & operator = (const Array_Base & rhs);
+
+  /**
    * Test the array for equality.
    *
    * @param[in]       rhs                  Right hand side of equal to sign
@@ -123,11 +157,19 @@ public:
    */
   bool operator != (const Array_Base & rhs) const;
 
-  /**
-   * Fill the contents of the array.
-   *
-   * @param[in]       ch                   Fill character
-   */
+   /**
+    * @overload
+    *
+    * The returned character is not modifiable.
+    */
+   const T & operator [] (size_t index) const;
+
+   /**
+    * @overload
+    *
+    * The turned character is modifiable.
+    */
+    T & operator [] (size_t index);
 
 protected:
   /// Pointer to the actual data.

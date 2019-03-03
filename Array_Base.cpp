@@ -2,6 +2,10 @@
 #include "Array_Base.h"
 #include <stdexcept>
 
+/*
+  CONSTRUCTORS
+*/
+
 // Default Constructor
 template <typename T>
 Array_Base <T>::Array_Base (void)
@@ -57,25 +61,22 @@ Array_Base <T>::~Array_Base (void)
   data_ = nullptr;
 }
 
-/// PUBLIC METHODS!!!
+/*
+  PUBLIC METHODS
+*/
 
-// Operator = overload
-template <typename T>
-const Array_Base<T> & Array_Base <T>::operator = (const Array_Base & rhs)
-{
-  delete[] data_;
-  this->data_ = rhs.data_;
-  return * this;
+/// size and max_size functions are in INLINE file
+
+//
+// get (index)
+//
+T get (size_t index) const {
+  return data_[index];
 }
 
-// operator [] overload
-template <typename T>
-const T & Array_Base<T>::operator [] (size_t index) const
-{
-  
-}
-
+//
 // find (value)
+//
 template  <typename T>
 int Array_Base <T>::find (T value) const
 {
@@ -93,13 +94,15 @@ int Array_Base <T>::find (T value) const
   return index;
 }
 
-/// find (value, starting element)
+
+//
+// find (value, starting element)
+//
 template <typename T>
 int Array_Base <T>::find (T val, size_t start) const
 {
   int index = -1;
   int found = 0;
-
 
   // Validates input and finds the Index
   if (start >= cur_size_) {
@@ -116,7 +119,69 @@ int Array_Base <T>::find (T val, size_t start) const
   return index;
 }
 
-/// Operator == overload
+//
+// set
+//
+template <typename T>
+void Array <T>::set (size_t index, T value)
+{
+  if ((index < 0) || (index >= this->cur_size_)) {
+    throw(std::out_of_range("Index is out of bounds"));
+  }
+  else {
+    *(this->data_ + index) = value;
+  }
+}
+
+//
+// fill
+//
+template <typename T>
+void Array <T>::fill (T value)
+{
+  for (int i = 0; i < this->max_size_; i++) {
+    *(this->data_ + i) = value;
+  }
+}
+
+//
+// reverse
+//
+void reverse (void) {
+
+}
+
+//
+// slice (begin)
+//
+Array slice (size_t begin) const{
+
+//
+// slice (begin, end)
+//
+}
+Array slice (size_t begin, size_t end) const {
+
+}
+
+/*
+  OPERATOR OVERLOADING
+*/
+
+//
+// Operator =
+//
+template <typename T>
+const Array_Base<T> & Array_Base <T>::operator = (const Array_Base & rhs)
+{
+  delete[] data_;
+  this->data_ = rhs.data_;
+  return * this;
+}
+
+//
+// Operator ==
+//
 template <typename T>
 bool Array_Base <T>::operator == (const Array_Base & rhs) const
 {
@@ -133,7 +198,9 @@ bool Array_Base <T>::operator == (const Array_Base & rhs) const
   }
 }
 
-/// operator != overload
+//
+// operator !=
+//
 template <typename T>
 bool Array_Base <T>::operator != (const Array_Base & rhs) const
 {
@@ -146,5 +213,34 @@ bool Array_Base <T>::operator != (const Array_Base & rhs) const
         return false;
       }
     }
+  }
+}
+
+//
+// operator []
+//
+template <typename T>
+const T & Array_Base<T>::operator [] (size_t index) const
+{
+  if ( (index < 0) || (index >= cur_size()) )
+    {
+      throw(std::out_of_range("Index is out of bounds"));
+    }
+  else
+    {
+      return *(data_ + index);
+    }
+}
+
+//
+// operator [] modifiable
+//
+T & Array_Base<T>::operator [] (size_t index)
+{
+  if ((index < 0) || (index >= this->cur_size_)) {
+    throw(std::out_of_range("Index is out of bounds"));
+  }
+  else {
+    return *(data_ + index);
   }
 }
