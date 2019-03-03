@@ -126,7 +126,7 @@ public:
    * @param[in]       begin           The starting index
    * @return          A new Array object
    */
-  Array slice (size_t begin) const;
+  Array_Base<T> slice(size_t begin) const;
 
   /**
    * @overload
@@ -135,7 +135,7 @@ public:
    * @param[in]       end             The ending index
    * @return          A new Array object
    */
-  Array slice (size_t begin, size_t end) const;
+  Array_Base<T> slice(size_t begin, size_t end) const;
 
   const Array_Base & operator = (const Array_Base & rhs);
 

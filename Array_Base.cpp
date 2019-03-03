@@ -70,8 +70,9 @@ Array_Base <T>::~Array_Base (void)
 //
 // get (index)
 //
-T get (size_t index) const {
-  return data_[index];
+template <typename T>
+T Array_Base<T>::get(size_t index) const {
+  return *(data_ + index);
 }
 
 //
@@ -123,7 +124,7 @@ int Array_Base <T>::find (T val, size_t start) const
 // set
 //
 template <typename T>
-void Array <T>::set (size_t index, T value)
+void Array_Base <T>::set (size_t index, T value)
 {
   if ((index < 0) || (index >= this->cur_size_)) {
     throw(std::out_of_range("Index is out of bounds"));
@@ -137,7 +138,7 @@ void Array <T>::set (size_t index, T value)
 // fill
 //
 template <typename T>
-void Array <T>::fill (T value)
+void Array_Base <T>::fill (T value)
 {
   for (int i = 0; i < this->max_size_; i++) {
     *(this->data_ + i) = value;
@@ -147,6 +148,7 @@ void Array <T>::fill (T value)
 //
 // reverse
 //
+template <typename T>
 void reverse (void) {
 
 }
@@ -154,13 +156,18 @@ void reverse (void) {
 //
 // slice (begin)
 //
-Array slice (size_t begin) const{
 
+template <typename T>
+Array_Base<T> Array_Base<T>::slice (size_t begin) const {
+
+
+}
 //
 // slice (begin, end)
 //
-}
-Array slice (size_t begin, size_t end) const {
+
+template <typename T>
+Array_Base<T> Array_Base<T>:: slice (size_t begin, size_t end) const {
 
 }
 
@@ -172,7 +179,7 @@ Array slice (size_t begin, size_t end) const {
 // Operator =
 //
 template <typename T>
-const Array_Base<T> & Array_Base <T>::operator = (const Array_Base & rhs)
+const Array_Base <T> & Array_Base <T>::operator = (const Array_Base & rhs)
 {
   delete[] data_;
   this->data_ = rhs.data_;
@@ -222,7 +229,7 @@ bool Array_Base <T>::operator != (const Array_Base & rhs) const
 template <typename T>
 const T & Array_Base<T>::operator [] (size_t index) const
 {
-  if ( (index < 0) || (index >= cur_size()) )
+  if ( (index < 0) || (index >= cur_size_) )
     {
       throw(std::out_of_range("Index is out of bounds"));
     }
@@ -235,6 +242,7 @@ const T & Array_Base<T>::operator [] (size_t index) const
 //
 // operator [] modifiable
 //
+template <typename T>
 T & Array_Base<T>::operator [] (size_t index)
 {
   if ((index < 0) || (index >= this->cur_size_)) {
