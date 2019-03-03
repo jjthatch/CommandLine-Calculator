@@ -66,6 +66,7 @@ Array <T>::Array (const Array & array)
 //
 // ~Array
 //
+
 template <typename T>
 Array <T>::~Array (void)
 {
@@ -73,19 +74,9 @@ Array <T>::~Array (void)
   data_ = nullptr;
 }
 
-//
-// operator =
-//
-template <typename T>
-const Array <T> & Array <T>::operator = (const Array & rhs)
-{
-  delete[] data_;
-  this->data_ = rhs.data_;
-  return * this;
-}
 
 //
-// operator []
+// operator [] modifiable
 //
 template <typename T>
 T & Array <T>::operator [] (size_t index){
@@ -97,33 +88,6 @@ T & Array <T>::operator [] (size_t index){
   }
 }
 
-//
-// operator []
-//
-template <typename T>
-const T & Array <T>::operator [] (size_t index) const
-{
-  if ((index < 0) || (index >= cur_size_)) {
-    throw(std::out_of_range("Index is out of bounds"));
-  }
-  else {
-    return *(data_ + index);
-  }
-}
-
-//
-// get
-//
-template <typename T>
-T Array <T>::get (size_t index) const
-{
-  if ((index < 0) || (index >= cur_size_)) {
-    throw(std::out_of_range("Index is out of bounds"));
-  }
-  else {
-    return *(data_ + index);
-  }
-}
 
 //
 // set
@@ -170,87 +134,7 @@ void Array <T>::resize (size_t new_size)
   }
 }
 
-//
-// find (char)
-//
-template  <typename T>
-int Array <T>::find (T value) const
-{
-  int found = 0;
-  int intstart = 0;
-  int index = -1;
-  for (int i = 0; i < cur_size_; i++) {
-    if (value == *(data_ + i)) {
-      if (found != 1) {
-        found = 1;
-        index = i;
-      }
-    }
-  }
-  return index;
-}
 
-//
-// find (char, size_t)
-//
-template <typename T>
-int Array <T>::find (T val, size_t start) const
-{
-  int index = -1;
-  int found = 0;
-
-
-  // Validates input and finds the Index
-  if (start >= cur_size_) {
-    throw std::out_of_range("Index out of bounds of array");
-  }
-  else {
-    for (size_t i = start; i < (cur_size_ - start); i++) {
-      if ((val == *(data_ + i)) && (found != 1)) {
-        found = 1;
-        index = i;
-      }
-    }
-  }
-  return index;
-}
-
-//
-// operator ==
-//
-template <typename T>
-bool Array <T>::operator == (const Array & rhs) const
-{
-  bool equality = true;
-  if ((cur_size_ == rhs.size()) && (cur_size_ == rhs.max_size())) {
-    equality = false;
-  }
-  else {
-    for (int i = 0; i < cur_size_; i++) {
-      if (*(data_ + i) != rhs[i]) {
-        equality = false;
-      }
-    }
-  }
-}
-
-//
-// operator !=
-//
-template <typename T>
-bool Array <T>::operator != (const Array & rhs) const
-{
-  if ((cur_size_ != rhs.cur_size_) || (max_size_ != rhs.max_size)) {
-    return true;
-  }
-  else {
-    for (int i = 0; i < cur_size_; i++) {
-      if (*(data_ + i) == rhs[i]) {
-        return false;
-      }
-    }
-  }
-}
 
 //
 // fill

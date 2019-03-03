@@ -11,9 +11,9 @@
 //
 template <typename T>
 inline
-size_t Array <T>::size (void) const
+size_t Array_Base <T>::size (void) const
 {
-	return cur_size_;  
+	return cur_size_;
 }
 
 //
@@ -21,7 +21,7 @@ size_t Array <T>::size (void) const
 //
 template <typename T>
 inline
-size_t Array <T>::max_size (void) const
+size_t Array_Base <T>::max_size (void) const
 {
 	return max_size_;
 }

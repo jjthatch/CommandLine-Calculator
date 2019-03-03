@@ -7,7 +7,7 @@
 #include "Queue.cpp"
 
 template <typename T>
-class Queue : public Array <T>
+class Queue : public Base_Array <T>
 {
 public:
   // Default constructor
