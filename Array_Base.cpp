@@ -182,7 +182,9 @@ template <typename T>
 const Array_Base <T> & Array_Base <T>::operator = (const Array_Base & rhs)
 {
   delete[] data_;
-  this->data_ = rhs.data_;
+  data_ = rhs.data_;
+  cur_size_ = rhs.size();
+  max_size_ = rhs.max_size();
   return * this;
 }
 

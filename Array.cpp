@@ -89,26 +89,28 @@ void Array <T>::resize (size_t new_size)
 {
   // When the array lengthens, max size changes only
   if (new_size >= this->max_size_) {
-    Array newarray(new_size);
-    for (int i = 0; i < new_size; i++) {
-      newarray[i] = *(this->data_ + i);
+    T * temp = new T[new_size];
+    for (int i = 0; i < this->max_size_; i++) {
+      *(temp + i) = *(this->data_ + i);
     }
     this->max_size_ = new_size;
     delete [] this->data_;
-    this->data_ = newarray;
+    this->data_ = temp;
+    temp = nullptr;
   }
   // If the array shrinks below cur_size_ then cur has to shrink as well
   else if (new_size < this->max_size_) {
-    Array newarray(new_size);
     this->max_size_ = new_size;
+    T * temp = new T[new_size];
     if (new_size < this->cur_size_) {
       this->cur_size_ = new_size;
     }
     for (int i = 0; i < this->max_size_; i++) {
-      newarray[i] = *(this->data_ + i);
-      delete [] this->data_;
-      this->data_ = newarray;
+      temp[i] = *(this->data_ + i);
     }
+    delete [] this->data_;
+    this->data_ = temp;
+    temp = nullptr;
   }
 }
 
