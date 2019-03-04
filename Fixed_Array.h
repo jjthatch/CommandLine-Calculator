@@ -75,7 +75,6 @@ public:
    * @param[in]       value                 New value for character
    * @exception       std::out_of_range     Invalid \a index value
    */
-  void set (size_t index, T value);
 };
 
 // include the inline files
