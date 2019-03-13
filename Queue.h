@@ -6,11 +6,7 @@
 #include "Array_Base.h"
 
 template <typename T>
-<<<<<<< HEAD
 class Queue : public Base_Array <T>
-=======
-class Queue : public Array_Base <T>
->>>>>>> cfb49baea81766e8070e594259148cc96065e180
 {
 public:
   // Default constructor
@@ -36,7 +32,6 @@ public:
   void clear(void);
 private:
   // Allows for resizing
-  void bigger(void);
   size_t inbound;
   size_t outbound;
 };

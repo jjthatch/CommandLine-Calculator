@@ -70,10 +70,10 @@ template <typename T>
 void Queue<T>::bigger(void) {
   this->max_size_ = this->max_size_ * 10;
   T * temp = new T[this->max_size_];
-  for (int i = 0; i < this->cur_size_; i++)
+  for (int i = 0; i < this->cur_size_; i++) 
   {
     temp[i] = this->get(i);
-  }
+  } 
   delete [] this->data_;
   this->data_ = temp;
 }
@@ -89,3 +89,4 @@ const Queue & Queue<T>::operator = (const Queue & rhs)
       *(this->data + i) = s->get(i);
     }
 }
+
