@@ -23,7 +23,11 @@ template <typename T>
 inline
 T Stack <T>::top (void) const
 {
-  return this->cur_size_;
+  if (top_ == 0) 
+  {
+    throw(empty_exception());
+  }
+  return (arr[top_- 1]);
 }
 
 //
@@ -33,5 +37,11 @@ template <typename T>
 inline
 bool Stack <T>::is_empty (void) const
 {
-
+  if (top_ == 0)
+    {
+      return true;
+    }
+  else {
+    return false;
+  }
 }
