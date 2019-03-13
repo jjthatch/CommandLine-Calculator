@@ -3,14 +3,10 @@
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
 
-#include "Array_Base.h"
+#include "Array.h"
 
 template <typename T>
-<<<<<<< HEAD
-class Queue : public Base_Array <T>
-=======
-class Queue : public Array_Base <T>
->>>>>>> cfb49baea81766e8070e594259148cc96065e180
+class Queue
 {
 public:
   // Default constructor
@@ -34,11 +30,26 @@ public:
   int size(void);
 
   void clear(void);
+
+  // A useful exception handling class
+  class empty_exception : public std::exception
+  {
+  public:
+    /// Default constructor.
+  empty_exception (void)
+    : std::exception () { }
+    
+    /// Messaging... constructor
+  empty_exception (const char * msg)
+    : std::exception (msg) { }
+  };
 private:
   // Allows for resizing
-  void bigger(void);
-  size_t inbound;
-  size_t outbound;
+  Array<T> arr_;  
+  size_t inbound_;
+  size_t outbound_;
+  bool empty_;
+  size_t stacksize_;
 };
 
 #include "Queue.cpp"

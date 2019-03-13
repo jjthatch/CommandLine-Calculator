@@ -4,79 +4,74 @@
 
 /// Constructor
 template <typename T>
-Queue <T>::Queue(void) 
-{
-  this->max_size_ = 10; // tracks output position for queue 
-  inbound = 0; // Tracks input position for queue
-  outbound = 0; // Tracks output position for the queue
-  this->data_ = new T[this->max_size_];
-}
+Queue <T>::Queue(void) : 
+arr_(10), 
+inbound_(0), 
+outbound_(0),
+empty_(true)
+{}
 
 /// Copy Constructor
 template <typename T>
-Queue <T>::Queue(const Queue & s)
-{
-  this->cur_size_ = s->size();
-  this->max_size_ = s->max_size();
-  this->data_ = new T[s->max_size()];
-  for (int i = 0; i < s->size(); i++) 
-    {
-      *(this->data + i) = s->get(i); 
-    }
-}
+Queue <T>::Queue(const Queue & s) :
+arr_(s.arr_),
+inbound_(s.inbound_),
+outbound_(s.outbound_)
+{}
 
 /// Adds elements
 template <typename T>
 void Queue<T>::enqueue(T element)
 {
-  if (size() == this->max_size_)
-  {
-    this->bigger();
+  if ((inbound_ == outbound_) && (arr.is_empty() == false) ) {
+    arr.resize(arr.size() * 10);
   }
-  *(this->data_ + inbound) = element;\
-  inbound++;
+  arr[inbound_ % arr.max_size()] = element;
+  inbound_++;
+  stacksize_++;
+  empty_ = false;
 }
 
-/// Removes element
+/// Dequeue :  removes element form queue
 template <typename T>
 void Queue<T>::dequeue(void)
 {
-  // What is a thing?
+  if ( (inbound_ % arr.max_size()) == (outbound_ % arr.max_size()) )
+  { 
+    empty_ = true;
+    throw(empty_exception());
+  }
+  outbound_++;
+  stacksize_--;
+  if ( (inbound_ % arr.max_size()) == (outbound_ % arr.max_size()) )
+  {
+    empty_ = true;
+  }
 }
 
 /// Checks if queue is empty
 template <typename T>
 bool Queue<T>::is_empty(void)
 {
-  // Do A thing
+  return empty_;
 }
 
 /// Number of elements utilized in the queue
 template <typename T>
 int size(void)
 {
-  // Do The thign
+  return stacksize_; 
 }
 
 /// Removes all values from the queue
 template <typename T>
 void clear(void)
 {
-  // Do another thing
+  inbound_ = 0;
+  outbound_ = 0;
+  empty_ = true;
 }
 
-/// Increases Queue size by a factor of 10
-template <typename T>
-void Queue<T>::bigger(void) {
-  this->max_size_ = this->max_size_ * 10;
-  T * temp = new T[this->max_size_];
-  for (int i = 0; i < this->cur_size_; i++) 
-  {
-    temp[i] = this->get(i);
-  } 
-  delete [] this->data_;
-  this->data_ = temp;
-}
 
 template <typename T>
 const Queue & Queue<T>::operator = (const Queue & rhs)
