@@ -20,6 +20,10 @@ project (assignment3) {
     Array.cpp
     Command.h 
     Binary_Command.cpp
-    
+    Addition_Operation.cpp
+    Subtraction_Operation.cpp
+    Multiplication_Operation.cpp
+    Division_Operation.cpp
+    Modulus_Operation.cpp    
   }
 }
