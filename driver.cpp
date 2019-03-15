@@ -18,13 +18,13 @@ int main (int argc, char * argv [])
 	} catch (...) {
 	  std::cout << "Queue is empty" << std::endl;
 	}
-	
+
 	for (int i = 0; i < 10; i++) {
 	  que.enqueue(i);
         }
 
 	que.enqueue(200);
-	
+
 	int temp;
 	for (int i = 0; i < 10; i++) {
 	  temp = que.dequeue();

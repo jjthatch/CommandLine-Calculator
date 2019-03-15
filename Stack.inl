@@ -23,7 +23,7 @@ template <typename T>
 inline
 T Stack <T>::top (void) const
 {
-  if (top_ == 0) 
+  if (top_ == 0)
   {
     throw(empty_exception());
   }

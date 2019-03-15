@@ -18,8 +18,8 @@ project (assignment3) {
     Queue.cpp
     Array_Base.cpp
     Array.cpp
-    Command.h 
+    Command.h
     Binary_Command.cpp
-    
+
   }
 }

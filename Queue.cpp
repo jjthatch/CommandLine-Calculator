@@ -4,9 +4,9 @@
 
 /// Constructor
 template <typename T>
-Queue <T>::Queue(void) : 
-arr_(10), 
-inbound_(0), 
+Queue <T>::Queue(void) :
+arr_(10),
+inbound_(0),
 outbound_(0),
 empty_(true)
 {}
@@ -43,7 +43,7 @@ T Queue<T>::dequeue(void)
   if (empty_) {
     Empty e;
     throw e;
-  }     
+  }
   outbound_++;
   stacksize_--;
   if ( (inbound_ % arr_.max_size()) == (outbound_ % arr_.max_size()) )
@@ -63,7 +63,7 @@ bool Queue<T>::is_empty(void)
 template <typename T>
 int Queue<T>::size(void)
 {
-  return stacksize_; 
+  return stacksize_;
 }
 
 /// Removes all values from the queue
@@ -87,4 +87,3 @@ const Queue<T> & Queue<T>::operator = (const Queue & rhs)
       *(this->data + i) = rhs->get(i);
     }
 }
-

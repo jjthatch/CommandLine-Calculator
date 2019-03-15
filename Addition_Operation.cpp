@@ -1,7 +1,4 @@
-// Addition cpp
-/
-
-int Addition_Operation::calculate(int num1, int  num2) 
+int Addition_Operation::calculate(int num1, int  num2)
 {
   return(num1 + num2);
 }
