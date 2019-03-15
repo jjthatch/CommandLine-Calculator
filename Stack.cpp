@@ -39,14 +39,13 @@ void Stack <T>::push (T element)
 // pop
 //
 template <typename T>
-T Stack <T>::pop (void)
+void Stack <T>::pop (void)
 {
-  if (top_ == 0) 
+  if (top_ == 0)
     {
       throw(empty_exception());
     }
   top_ = top_ - 1;
-  return top_;
 }
 
 //
@@ -56,7 +55,7 @@ template <typename T>
 const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 {
   arr = rhs.arr;
-  return this;           
+  return this;
 }
 
 //

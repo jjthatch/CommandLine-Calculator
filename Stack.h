@@ -22,7 +22,7 @@
  * Basic stack for abitrary elements.
  */
 template <typename T>
-class Stack 
+class Stack
 {
 public:
   /// Type definition of the type.
@@ -79,7 +79,7 @@ public:
    *
    * @exception      empty_exception    The stack is empty.
    */
-  T pop (void);
+  void pop (void);
 
   /**
    * Get the top-most element on the stack. If there are no element

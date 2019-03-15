@@ -37,7 +37,7 @@ public:
   class Empty : public std::exception
   {
   public:
-    const char* what() const throw() 
+    const char* what() const throw()
     {
       return "The queue is empty";
     }
@@ -45,7 +45,7 @@ public:
 
 private:
   // Allows for resizing
-  Array<T> arr_;  
+  Array<T> arr_;
   size_t inbound_;
   size_t outbound_;
   bool empty_;
