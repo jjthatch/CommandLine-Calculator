@@ -19,14 +19,18 @@ inbound_(s.inbound_),
 outbound_(s.outbound_)
 {}
 
+/// Destructor
+template <typename T>
+Queue<T>::~Queue(void) {}
+
 /// Adds elements
 template <typename T>
 void Queue<T>::enqueue(T element)
 {
-  if ((inbound_ == outbound_) && (arr.is_empty() == false) ) {
-    arr.resize(arr.size() * 10);
+  if ((inbound_ % arr_.size() == outbound_ % arr_.size()) && (is_empty() == false) ) {
+    arr_.resize(arr_.size() * 10);
   }
-  arr[inbound_ % arr.max_size()] = element;
+  arr_[inbound_ % arr_.size()] = element;
   inbound_++;
   stacksize_++;
   empty_ = false;
@@ -34,16 +38,15 @@ void Queue<T>::enqueue(T element)
 
 /// Dequeue :  removes element form queue
 template <typename T>
-void Queue<T>::dequeue(void)
+T Queue<T>::dequeue(void)
 {
-  if ( (inbound_ % arr.max_size()) == (outbound_ % arr.max_size()) )
-  { 
-    empty_ = true;
-    throw(empty_exception());
-  }
+  if (empty_) {
+    Empty e;
+    throw e;
+  }     
   outbound_++;
   stacksize_--;
-  if ( (inbound_ % arr.max_size()) == (outbound_ % arr.max_size()) )
+  if ( (inbound_ % arr_.max_size()) == (outbound_ % arr_.max_size()) )
   {
     empty_ = true;
   }
@@ -58,14 +61,14 @@ bool Queue<T>::is_empty(void)
 
 /// Number of elements utilized in the queue
 template <typename T>
-int size(void)
+int Queue<T>::size(void)
 {
   return stacksize_; 
 }
 
 /// Removes all values from the queue
 template <typename T>
-void clear(void)
+void Queue<T>::clear(void)
 {
   inbound_ = 0;
   outbound_ = 0;
@@ -74,14 +77,14 @@ void clear(void)
 
 
 template <typename T>
-const Queue & Queue<T>::operator = (const Queue & rhs)
+const Queue<T> & Queue<T>::operator = (const Queue & rhs)
 {
-  this->cur_size_ = s->size();
-  this->max_size_ = s->max_size();
-  this->data_ = new T[s->max_size()];
-  for (int i = 0; i < s->size(); i++)
+  this->cur_size_ = rhs->size();
+  this->max_size_ = rhs->max_size();
+  this->data_ = new T[rhs->max_size()];
+  for (int i = 0; i < rhs->size(); i++)
     {
-      *(this->data + i) = s->get(i);
+      *(this->data + i) = rhs->get(i);
     }
 }
 

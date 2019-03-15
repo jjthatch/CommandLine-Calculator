@@ -39,13 +39,14 @@ void Stack <T>::push (T element)
 // pop
 //
 template <typename T>
-void Stack <T>::pop (void)
+T Stack <T>::pop (void)
 {
   if (top_ == 0) 
     {
       throw(empty_exception());
     }
   top_ = top_ - 1;
+  return top_;
 }
 
 //

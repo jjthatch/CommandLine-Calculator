@@ -1,11 +1,11 @@
-// $Id: assignment2.mpc 378 2010-02-07 22:09:38Z hillj $
+// $Id: assignment3.mpc 378 2010-02-07 22:09:38Z hillj $
 
-project (assignment2) {
+project (assignment3) {
   exename = assignment3
   install = .
 
   specific (make, gnuace) {
-    compile_flags += -std=c++11
+    compile_flags += -std=c++11 -g
   }
 
   Source_Files {
@@ -18,5 +18,8 @@ project (assignment2) {
     Queue.cpp
     Array_Base.cpp
     Array.cpp
+    Command.h 
+    Binary_Command.cpp
+    
   }
 }

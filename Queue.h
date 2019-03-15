@@ -4,6 +4,8 @@
 #define _QUEUE_H_
 
 #include "Array.h"
+#include <string>
+#include <exception>
 
 template <typename T>
 class Queue
@@ -15,7 +17,7 @@ public:
   // Copy Consturctor
   Queue(const Queue & s);
 
-  // Destructor
+  // Desstructor
   ~Queue(void);
 
   // Assignment =
@@ -23,7 +25,7 @@ public:
 
   void enqueue(T element);
 
-  void dequeue(void);
+  T dequeue(void);
 
   bool is_empty(void);
 
@@ -32,17 +34,15 @@ public:
   void clear(void);
 
   // A useful exception handling class
-  class empty_exception : public std::exception
+  class Empty : public std::exception
   {
   public:
-    /// Default constructor.
-  empty_exception (void)
-    : std::exception () { }
-    
-    /// Messaging... constructor
-  empty_exception (const char * msg)
-    : std::exception (msg) { }
+    const char* what() const throw() 
+    {
+      return "The queue is empty";
+    }
   };
+
 private:
   // Allows for resizing
   Array<T> arr_;  
