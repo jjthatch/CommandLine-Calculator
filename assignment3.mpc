@@ -24,6 +24,7 @@ project (assignment3) {
     Subtraction_Operation.cpp
     Multiplication_Operation.cpp
     Division_Operation.cpp
-    Modulus_Operation.cpp    
+    Modulus_Operation.cpp
+    Number.cpp    
   }
 }

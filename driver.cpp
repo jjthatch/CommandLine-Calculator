@@ -13,6 +13,7 @@
 #include "Multiplication_Operation.h"
 #include "Subtraction_Operation.h"
 #include "Modulus_Operation.h"
+#include "Number_Command.h"
 
 int main (int argc, char * argv [])
 {
@@ -49,6 +50,15 @@ int main (int argc, char * argv [])
 
 	// NOW WE LOOK AT THE RESULT. AND THE CARD ISSSSS?!?!!
 	std::cout << test.top() << std::endl;
+
+	std::cout << "Since we're so happy about things compiling and working, I'm going to divide by 0 now" << std::endl;
+	// Now for shits and giggle let's divide by 0
+	Stack<int> test2;
+	test2.push(0);
+	test2.push(3);
+	Division_Operation anotherdivider(test2);
+	anotherdivider.execute();
+	std::cout << test2.top() << std::endl;
 
 	// CELEBRATION
 	std::cout << "It compiled" << std::endl;

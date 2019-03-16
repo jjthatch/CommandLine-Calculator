@@ -1,6 +1,7 @@
 #ifndef DIVISION_OP
 #define DIVISION_OP
 
+#include <stdexcept>
 #include "Binary_Command.h"
 
 // Divides and returns value

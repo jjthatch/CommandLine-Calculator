@@ -26,15 +26,15 @@ MKDIR         = mkdir -p
 TESTDIRSTART  = test -d
 TESTDIREND    = ||
 TOUCH         = touch
-EXEEXT        =
+EXEEXT        = 
 LIBPREFIX     = lib
-LIBSUFFIX     =
+LIBSUFFIX     = 
 GENFLAGS      = -O
 LDLIBS        = -ldl $(subst lib,-l,$(sort $(basename $(notdir $(wildcard /usr/lib/librt.so /lib/librt.so))))) -lpthread
 OBJS          = driver$(OBJEXT)
 SRC           = driver.cpp
 LINK.cc       = $(LD) $(LDFLAGS)
-EXPORTFLAGS   =
+EXPORTFLAGS   = 
 DEPLIBS       = $(foreach lib, , $(foreach libpath, ., $(wildcard $(libpath)/lib$(lib).a)))
 
 #----------------------------------------------------------------------------
