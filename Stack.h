@@ -33,20 +33,14 @@ public:
    *
    * Exception thrown to indicate the stack is empty.
    */
-  class empty_exception : public std::exception
+  // A useful exception handling class
+  class Empty : public std::exception
   {
   public:
-    /// Default constructor.
-    empty_exception (void)
-      : std::exception () { }
-
-    /**
-     * Initializing constructor.
-     *
-     * @param[in]      msg         Error message.
-     */
-    empty_exception (const char * msg)
-      : std::exception (msg) { }
+    const char* what() const throw()
+    {
+      return "The stack is empty";
+    }
   };
 
   /// Default constructor.
