@@ -7,7 +7,7 @@
 class Multiplication_Operation : public Binary_Command {
   public:
     Multiplication_Operation (Stack <int> & s);
-    int calculate(int num1, int num2);
+    int calculate(int num1, int num2) const;
 };
 
 #include "Multiplication_Operation.cpp"

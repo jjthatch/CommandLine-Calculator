@@ -6,7 +6,7 @@
 class Modulus_Operation : public Binary_Command {
   public:
     Modulus_Operation (Stack <int> & s);
-    int calculate(int num1, int num2);
+    int calculate(int num1, int num2) const;
 };
 
 #include "Modulus_Operation.cpp"
