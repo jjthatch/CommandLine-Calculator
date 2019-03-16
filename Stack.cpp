@@ -43,7 +43,8 @@ void Stack <T>::pop (void)
 {
   if (top_ == 0)
     {
-      throw(empty_exception());
+      Empty e;
+      throw e;
     }
   top_ = top_ - 1;
 }

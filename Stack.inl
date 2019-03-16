@@ -25,7 +25,8 @@ T Stack <T>::top (void) const
 {
   if (top_ == 0)
   {
-    throw(empty_exception());
+    Empty e;
+    throw e;
   }
   return (arr[top_- 1]);
 }
