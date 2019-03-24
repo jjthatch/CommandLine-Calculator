@@ -1,14 +1,17 @@
 //I pledge to not help or receive help from others during this assignment
 
 #include "Queue.h"
+#include <stdio.h>
 
 /// Constructor
 template <typename T>
 Queue <T>::Queue(void) :
-arr_(10),
+arr_(100),
 inbound_(0),
 outbound_(0),
-empty_(true)
+empty_(true),
+max_size_(100),
+stacksize_(0)
 {}
 
 /// Copy Constructor
@@ -27,10 +30,24 @@ Queue<T>::~Queue(void) {}
 template <typename T>
 void Queue<T>::enqueue(T element)
 {
-  if ((inbound_ % arr_.size() == outbound_ % arr_.size()) && (is_empty() == false) ) {
-    arr_.resize(arr_.size() * 10);
+  // IF FULL
+  if ( stacksize_ == max_size_ ) {
+    T * temp = new T[max_size_];
+    for (int i = 0; i < max_size_; i++)
+    {
+      *(temp + i) = dequeue();    
+    } 
+    arr_.resize(max_size_ * 10);
+    // Temp array values filled into main queue then destroyed
+    for (int i = 0; i < max_size_; i++)
+    {
+      enqueue(*(temp + i));
+    }
+    max_size_ = (max_size_ * 10);
+    delete[] temp;
   }
-  arr_[inbound_ % arr_.size()] = element;
+  // ELSE
+  arr_[inbound_ % max_size_] = element;
   inbound_++;
   stacksize_++;
   empty_ = false;
@@ -46,10 +63,12 @@ T Queue<T>::dequeue(void)
   }
   outbound_++;
   stacksize_--;
-  if ( (inbound_ % arr_.max_size()) == (outbound_ % arr_.max_size()) )
+  if (stacksize_ == 0) 
   {
     empty_ = true;
   }
+   T temp = (outbound_ - 1) % max_size_;
+   return arr_[temp];
 }
 
 /// Checks if queue is empty
@@ -64,6 +83,13 @@ template <typename T>
 int Queue<T>::size(void)
 {
   return stacksize_;
+}
+
+/// Number of elements allowed in the queue
+template <typename T>
+int Queue<T>::max_size(void)
+{
+  return max_size_;
 }
 
 /// Removes all values from the queue

@@ -23,14 +23,12 @@ public:
   // Assignment =
   const Queue & operator = (const Queue & rhs);
 
+  // Class methods
   void enqueue(T element);
-
   T dequeue(void);
-
   bool is_empty(void);
-
-  int size(void);
-
+  int size(void); // Return the current size
+  int max_size(void); // Returns the max size
   void clear(void);
 
   // A useful exception handling class
@@ -50,6 +48,7 @@ private:
   size_t outbound_;
   bool empty_;
   size_t stacksize_;
+  size_t max_size_;
 };
 
 #include "Queue.cpp"
