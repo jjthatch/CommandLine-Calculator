@@ -18,14 +18,19 @@
 int main (int argc, char * argv [])
 {
 
+	/*
 	// Telling the teacher what in the worlds going on
 	std::cout << "BEHOLD \n I will now tranform THIS POSTFIX OPERATION!" << std::endl;
 	std::cout << "4 12 8 8 2 5 + - x / % " << std::endl;
 	std::cout << "Into a solution using only a stack and command objects. FEAR MY POWER" << std::endl;
+	*/
 
 	// Creating a stack
 	Stack<int> test;
+	std::cout << "Loading up the queue" << std::endl;
+	Queue<Command *> choochoo;
 
+		
 	// Pushing number on stack
 	test.push(5);
 	test.push(2);
@@ -35,30 +40,37 @@ int main (int argc, char * argv [])
 	test.push(4);
 
 	// Now we create commands
+	/*
         Addition_Operation adder(test);
 	Subtraction_Operation subber(test);
 	Multiplication_Operation multer(test);
 	Division_Operation divider(test);
 	Modulus_Operation moder(test);
+	*/
+
+	choochoo.enqueue(new Addition_Operation());
+		
+	choochoo.enqueue(new Subtraction_Operation());
+
+	choochoo.enqueue(new Multiplication_Operation());
+
+	choochoo.enqueue(new Division_Operation());
 			
-	// Now we EXECUTE THEM ALL, HNGHHHHH
+	choochoo.enqueue(new Modulus_Operation());
+	
+// Now we EXECUTE THEM ALL, HNGHHHHH
+	/*
+	while (!choochoo.is_empty())
 	adder.execute();
 	subber.execute();
 	multer.execute();
 	divider.execute();
 	moder.execute();
+	*/
 
 	// NOW WE LOOK AT THE RESULT. AND THE CARD ISSSSS?!?!!
 	std::cout << test.top() << std::endl;
 
-	std::cout << "Since we're so happy about things compiling and working, I'm going to divide by 0 now" << std::endl;
-	// Now for shits and giggle let's divide by 0
-	Stack<int> test2;
-	test2.push(0);
-	test2.push(3);
-	Division_Operation anotherdivider(test2);
-	anotherdivider.execute();
-	std::cout << test2.top() << std::endl;
 
 	// CELEBRATION
 	std::cout << "It compiled" << std::endl;
