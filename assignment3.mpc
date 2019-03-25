@@ -19,6 +19,9 @@ project (assignment3) {
     Array_Base.cpp
     Array.cpp
     Command.h
+    Number_Command.cpp
+    LeftParenthesis.h
+    RightParenthesis.h
     Binary_Command.cpp
     Addition_Operation.cpp
     Subtraction_Operation.cpp
