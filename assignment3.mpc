@@ -28,6 +28,8 @@ project (assignment3) {
     Multiplication_Operation.cpp
     Division_Operation.cpp
     Modulus_Operation.cpp
-    Number.cpp    
+    Number.cpp
+    Factorio.cpp
+    UpperCommandFactory.h    
   }
 }
