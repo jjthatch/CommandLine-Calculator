@@ -1,5 +1,5 @@
 // Factorio Conveyor Belts
-	Addition_Operation * Fatorio::buildAddition(Stack<int> calcZone) 
+	Addition_Operation * Factorio::buildAddition(Stack<int> calcZone) 
 	{
 		return new Addition_Operation(calcZone);	
 	}
@@ -19,15 +19,15 @@
 	{
 		return new Modulus_Operation(calcZone);
 	}
-	Left_Parenthesis_Command * Factorio::buildLParenthesis(Stack<int> calcZone) 
+	LeftParenthesis_Command * Factorio::buildLParenthesis() 
 	{
-		return new buildLParenthesis();
+		return new LeftParenthesis_Command();
 	}
-	Right_Parenthesis_Command * Factorio::buildRParenthesis(Stack<int> calcZone)
+	RightParenthesis_Command * Factorio::buildRParenthesis()
 	{
-		return new buildRParenthesis();
+		return new RightParenthesis_Command();
 	}
-	Number_Command * Factorio::buildNumber(Stack<int> calcZone)
+	Number_Command * Factorio::buildNumber(Stack<int> calcZone, int num)
 	{
-		return new buildNumber(calcZone); 
+		return new Number_Command(calcZone, num); 
 	}

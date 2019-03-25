@@ -1,8 +1,8 @@
 // Number Definitions
-Number::Number(Stack <int> & s, int num) :
+Number_Command::Number_Command(Stack <int> & s, int num) :
 s_(s),
 i_(num) {}
 
-void Number::execute() {
+void Number_Command::execute() {
   s_.push(i_);
 }

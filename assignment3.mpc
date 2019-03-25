@@ -30,6 +30,7 @@ project (assignment3) {
     Modulus_Operation.cpp
     Number.cpp
     Factorio.cpp
-    UpperCommandFactory.h    
+    UpperCommandFactory.h
+    Calculator.cpp    
   }
 }

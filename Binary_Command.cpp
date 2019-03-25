@@ -12,4 +12,3 @@ void Binary_Command::execute()
   s_.push(temp);
 }
 
-// int Binary_Command::calculate(int num1, int num2) const {}

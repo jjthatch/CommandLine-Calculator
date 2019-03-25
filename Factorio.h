@@ -1,7 +1,8 @@
 #ifndef CONCRETE_FACTORY
 #define CONCRETE_FACTORY
 
-class Factorio() : UpperCommandFactory
+#include "UpperCommandFactory.h"
+class Factorio : UpperCommandFactory
 {
 public: 
 // 
@@ -10,11 +11,9 @@ public:
 	virtual Multiplication_Operation * buildMultiplication(Stack<int> calcZone);
 	virtual Division_Operation * buildDivision(Stack<int> calcZone);
 	virtual Modulus_Operation * buildModudulus(Stack<int> calcZone);
-	virtual Left_Parenthesis * buildLParenthesis(Stack<int> calcZone);
-	virtual Modulus_Operation * buildModudulus(Stack<int> calcZone);
-	virtual Left_Parenthesis * buildLParenthesis(Stack<int> calcZone);
-	virtual Right_Parenthesis * buildRParenthesis(Stack<int> calcZone);
-	virtual Number_Command * buildNumber(Stack<int> calcZone); 
+	virtual LeftParenthesis_Command * buildLParenthesis();
+	virtual RightParenthesis_Command * buildRParenthesis();
+	virtual Number_Command * buildNumber(Stack<int> calcZone, int num); 
 };
 
 #include "Factorio.cpp"

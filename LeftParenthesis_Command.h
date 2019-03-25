@@ -5,18 +5,11 @@
 
 class LeftParenthesis_Command : Command
 {
-	std::string whatAmI() 
-	{
-		return "(";
-	}
-private:
+public:
 	void execute() {
 		// NOTHING EXISTS
 	}
-	int calculate(int num1, int num2) {
-		// BE THE NOTHING
-	}	
-
+	
 };
 
 #endif

@@ -3,9 +3,9 @@
 
 #include "Command.h"
 
-class Number {
+class Number_Command {
 public:
-  Number(Stack <int> & s, int num);
+  Number_Command(Stack <int> & s, int num);
   
   void execute();
 protected:

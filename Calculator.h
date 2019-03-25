@@ -4,7 +4,7 @@
 class Calculator {
 public:
 	Calculator();
-	Queue<Command *> & parseInput(Queue< Command * > & commands);
+	Queue<Command *> & parseInput(Queue<Command *> & commandList, Stack<int> bucket);
 	void calculate();
 	void printResult; 
 private:
@@ -13,6 +13,6 @@ private:
 	Parser percy_;
 };
 
-#endif
 
 #include "Calculator.cpp"
+#endif
