@@ -31,6 +31,7 @@ project (assignment3) {
     Number.cpp
     Factorio.cpp
     UpperCommandFactory.h
-    Calculator.cpp    
+    Calculator.cpp 
+    Parser.cpp   
   }
 }
