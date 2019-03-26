@@ -17,7 +17,7 @@
 class UpperCommandFactory
 {
 public:	
-	virtual ~UpperCommandFactory();
+	virtual ~UpperCommandFactory(); // Default Destructor
 	// Factory 1 schematics for Binary Expressions
 	virtual Addition_Operation * buildAddition(Stack<int> calcZone) = 0;
 	virtual Subtraction_Operation * buildSubtraction(Stack<int> calcZone) = 0;
