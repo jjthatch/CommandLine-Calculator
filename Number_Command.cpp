@@ -3,6 +3,11 @@ Number_Command::Number_Command(Stack <int> & s, int num) :
 s_(s),
 i_(num) {}
 
+int Number_Command::iAm() 
+{
+	return i_; 
+}
+
 void Number_Command::execute() {
   s_.push(i_);
 }

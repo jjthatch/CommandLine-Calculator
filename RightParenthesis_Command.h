@@ -1,12 +1,18 @@
-#define RPARENT
 #ifndef RPARENT
+#define RPARENT
+
 
 #include "Command.h"
 
 class RightParenthesis_Command : Command
 {
 public:
-	void execute() {
+	std::string iAm() 
+	{
+		return ")";
+	}
+	void execute()
+	{
 		// NOTHING
 	}
 };

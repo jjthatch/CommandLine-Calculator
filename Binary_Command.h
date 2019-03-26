@@ -8,6 +8,7 @@ class Binary_Command : public Command {
 public:
   Binary_Command(Stack <int> & s);
   void execute();
+  std::string iAm();
   virtual int calculate(int num1, int num2) const = 0;
 protected:
   Stack<int> & s_;

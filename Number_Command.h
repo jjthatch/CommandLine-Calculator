@@ -6,7 +6,7 @@
 class Number_Command {
 public:
   Number_Command(Stack <int> & s, int num);
-  
+  int iAm(); 
   void execute();
 protected:
   Stack<int> & s_;
