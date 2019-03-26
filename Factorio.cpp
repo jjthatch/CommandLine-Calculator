@@ -15,7 +15,7 @@
 	{
 		return new Division_Operation(calcZone);
 	}
-	Modulus_Operation * Factorio::buildModudulus(Stack<int> calcZone)
+	Modulus_Operation * Modulus(Stack<int> calcZone)
 	{
 		return new Modulus_Operation(calcZone);
 	}
