@@ -6,6 +6,7 @@
 class LeftParenthesis_Command : Command
 {
 public:
+	LeftParenthesis_Command() {}
 	void execute() {
 		// NOTHING EXISTS
 	}
