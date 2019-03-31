@@ -2,5 +2,5 @@ Multiplication_Operation::Multiplication_Operation(Stack <int> & s) : Binary_Com
 
 int Multiplication_Operation::calculate(int num1, int num2) const
 {
-  return(num1 * num2);
+  return(num2 * num1);
 }

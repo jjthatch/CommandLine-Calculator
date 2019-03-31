@@ -25,7 +25,7 @@
 class Parser {
 public:
 	Parser();
-	void toPostfix(Queue<Command *> & commandList, Stack<int> & bucket);
+	void toPostfix(Queue<Command *> & commandList, Stack<int> & bucket, std::string input);
 	bool isInt(std::string possibleInteger);
 private:
 	Factorio factory;	

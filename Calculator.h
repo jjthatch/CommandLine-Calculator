@@ -6,9 +6,11 @@
 class Calculator {
 public:
 	Calculator();
-	void parseInput();
+	void execute();
+	void parseInput(std::string & input);
 	void calculate();
-	void printResult(); 
+	void printResult();
+	void clearData(); 
 private:
 	Queue<Command *> commandList_; 
 	Stack<int> finalCountdown_;

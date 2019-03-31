@@ -99,6 +99,8 @@ void Queue<T>::clear(void)
   inbound_ = 0;
   outbound_ = 0;
   empty_ = true;
+  max_size_ = 100;
+  stacksize_ = 0;
 }
 
 

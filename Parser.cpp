@@ -15,7 +15,7 @@ bool Parser::isInt(std::string possibleInteger)
 	}	
 }
 
-void Parser::toPostfix(Queue<Command *> & commandList, Stack<int> & bucket )
+void Parser::toPostfix(Queue<Command *> & commandList, Stack<int> & bucket, std::string input)
 {	
 	// Set to true when number is scanned, IF false when operator scanned, then NOT VALID
 	bool numberBefore = false;
@@ -27,13 +27,8 @@ void Parser::toPostfix(Queue<Command *> & commandList, Stack<int> & bucket )
 	// Temporary Stack to temporarily store operators
 	Stack<Command *> temp;
  
-	// User inputs into string. 
-	std::string input;
-	std::cout << "Please enter your expression \n :" ;
-	std::getline(std::cin, input);
-	
+	// Input from argument transformed into stringstream to be tokenized
 	std::istringstream stream(input);
-	
 	std::string token;
 	
 	while ( !(stream.eof()) )

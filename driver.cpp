@@ -27,10 +27,7 @@ int main (int argc, char * argv [])
 {	
 	// Calculator is created, which also, created a parser automatically. Which means madness is going to happen.
 	Calculator simplecalc;
-	simplecalc.parseInput();
-	simplecalc.calculate();
-	simplecalc.printResult();		
-	
+	simplecalc.execute();		
 
 	/* Manual Example	
 	Stack<int> nums;

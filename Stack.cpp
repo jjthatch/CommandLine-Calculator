@@ -9,7 +9,7 @@
 // Stack Default Constructor
 //
 template <typename T>
-Stack <T>::Stack (void) : arr(10), top_(0) {}
+Stack <T>::Stack (void) : arr(100), top_(0) {}
 
 //
 // Stack Copy Constructor
