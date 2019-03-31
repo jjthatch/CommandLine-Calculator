@@ -26,7 +26,27 @@
 int main (int argc, char * argv [])
 {	
 	// Calculator is created, which also, created a parser automatically. Which means madness is going to happen.
+	Calculator simplecalc;
+	simplecalc.parseInput();
+	simplecalc.calculate();
+	simplecalc.printResult();		
 	
+
+	/* Manual Example	
+	Stack<int> nums;
+	Queue<Command *> temp;
+	Factorio factory;
+	temp.enqueue(factory.buildNumber(nums, 3));
+	temp.enqueue(factory.buildNumber(nums, 3));
+	temp.enqueue(factory.buildAddition(nums));
+	temp.dequeue()->execute(); // should Execute and push 3 to stack
+	std::cout << nums.top() << std::endl;
+	temp.dequeue()->execute();
+	std::cout << nums.top() << std::endl;
+	temp.dequeue()->execute();
+	std::cout << nums.top() << std::endl;
+	*/
+
 	// CELEBRATION
 	std::cout << "It compiled" << std::endl;
 	std::cin.ignore();

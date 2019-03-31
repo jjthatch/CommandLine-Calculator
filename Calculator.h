@@ -1,16 +1,18 @@
-#define CALCULATOR
 #ifndef CALCULATOR 
+#define CALCULATOR
+
+#include "Parser.h"
 
 class Calculator {
 public:
 	Calculator();
-	Queue<Command *> & parseInput(Queue<Command *> & commandList, Stack<int> bucket);
+	void parseInput();
 	void calculate();
-	void printResult; 
+	void printResult(); 
 private:
 	Queue<Command *> commandList_; 
 	Stack<int> finalCountdown_;
-	Parser percy_;
+	Parser * percy_;
 };
 
 

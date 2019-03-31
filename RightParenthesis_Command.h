@@ -4,7 +4,7 @@
 
 #include "Command.h"
 
-class RightParenthesis_Command : Command
+class RightParenthesis_Command : public Command
 {
 public:
 	std::string iAm() 

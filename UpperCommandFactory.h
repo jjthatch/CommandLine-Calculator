@@ -17,16 +17,16 @@
 class UpperCommandFactory
 {
 public:	
-	virtual ~UpperCommandFactory(); // Default Destructor
+	virtual ~UpperCommandFactory() {/* default destructor */} 
 	// Factory 1 schematics for Binary Expressions
-	virtual Addition_Operation * buildAddition(Stack<int> calcZone) = 0;
-	virtual Subtraction_Operation * buildSubtraction(Stack<int> calcZone) = 0;
-	virtual Multiplication_Operation * buildMultiplication(Stack<int> calcZone) = 0;
-	virtual Division_Operation * buildDivision(Stack<int> calcZone) = 0;
-	virtual Modulus_Operation * buildModudulus(Stack<int> calcZone) = 0;
+	virtual Addition_Operation * buildAddition(Stack<int> & calcZone) = 0;
+	virtual Subtraction_Operation * buildSubtraction(Stack<int> & calcZone) = 0;
+	virtual Multiplication_Operation * buildMultiplication(Stack<int> & calcZone) = 0;
+	virtual Division_Operation * buildDivision(Stack<int> & calcZone) = 0;
+	virtual Modulus_Operation * buildModulus(Stack<int> & calcZone) = 0;
 	virtual LeftParenthesis_Command * buildLParenthesis() = 0;
 	virtual RightParenthesis_Command * buildRParenthesis() = 0;
-	virtual Number_Command * buildNumber(Stack<int> calcZone) = 0; 
+	virtual Number_Command * buildNumber(Stack<int> & calcZone, int num) = 0; 
 };
 
 #endif 

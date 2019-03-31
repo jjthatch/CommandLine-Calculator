@@ -3,9 +3,9 @@ Number_Command::Number_Command(Stack <int> & s, int num) :
 s_(s),
 i_(num) {}
 
-int Number_Command::iAm() 
+std::string Number_Command::iAm() 
 {
-	return i_; 
+	return "Some number"; 
 }
 
 void Number_Command::execute() {

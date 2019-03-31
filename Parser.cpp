@@ -1,9 +1,21 @@
 Parser::Parser() 
 {
-	factory = new Factorio(); 
+	Factorio * factory = new Factorio(); 
 }
 
-void Parser::toInfixToken(Queue<Command *> & CommandList, Stack<int> bucket, );
+// Returns True if the string token is an integer
+bool Parser::isInt(std::string possibleInteger)
+{	
+	// Return location of first non-integer, otherwise return string::npos
+	std::size_t invalidChar = possibleInteger.find_first_not_of("1234567890");
+	if (invalidChar == std::string::npos)
+		return true;
+	else {	
+		return false;
+	}	
+}
+
+void Parser::toPostfix(Queue<Command *> & commandList, Stack<int> & bucket )
 {	
 	// Set to true when number is scanned, IF false when operator scanned, then NOT VALID
 	bool numberBefore = false;
@@ -13,62 +25,68 @@ void Parser::toInfixToken(Queue<Command *> & CommandList, Stack<int> bucket, );
 	bool precedented = false;
 	
 	// Temporary Stack to temporarily store operators
-	Stack<Command *> temp();
+	Stack<Command *> temp;
  
 	// User inputs into string. 
 	std::string input;
-	std::cout << "Please enter your expression \n :" << ;
+	std::cout << "Please enter your expression \n :" ;
 	std::getline(std::cin, input);
 	
-	std::istringstream expression(input);
-
-	// 
-	std::string operatorToken;
-	int operandToken = 0;
+	std::istringstream stream(input);
 	
-
-	while (!input.eof())
+	std::string token;
+	
+	while ( !(stream.eof()) )
 	{
-		// First checks if it's an int that can be parsed as an operand
-		if (cin >> operandToken) 
+		stream >> token;
+	 
+		// First checks if token is int
+		if ( isInt(token) ) 
 		{
-			CommandList.queue( factory.buildNumber(bucket, operandToken) );
+			int tempInt = std::stoi(token); 
+			commandList.enqueue( factory.buildNumber(bucket, tempInt) );
 			if (precedented == true) 
 			{
-				CommandList.enqueue( temp.top() );
+				commandList.enqueue( temp.top() );
 				temp.pop();
 			}
 		}
+
 		// IF it isn't an int it sees if it is an operator and parses accordingly
-		else if (cin >> stringtoken)
+		else 
 		{	
-			switch (stringtoken)
+			if (token == "+")
+			{ 
+				temp.push( factory.buildAddition(bucket) );
+			}	
+			else if (token == "-")
 			{
-				case "+": 
-					temp.push( factory.buildAddition(bucket) );
-					break;	
-				case "-":
-					temp.push( factory.buildSubtraction(bucket) );
-					break;
-				case "/":
-					precedented = true;
-					temp.push( factory.buildDivision(bucket) );
-					break;
-				case "*":
-					precedented = true;
-					temp.push( factory.buildMultiplication(bucket) );
-					break;
-				case "%":
-					precedented = true;
-					temp.push( factory.buildModulus );
-					break;
-				case "(":
+				temp.push( factory.buildSubtraction(bucket) );
+			}
+			else if (token == "/")
+			{
+				precedented = true;
+				temp.push( factory.buildDivision(bucket) );
+			}
+			else if (token == "*")
+			{
+				precedented = true;
+				temp.push( factory.buildMultiplication(bucket) );
+			}
+			else if (token == "%")
+			{
+				precedented = true;
+				temp.push( factory.buildModulus(bucket) );
+			}
+			else if (token == "(")
+			{
 					if (precedented == true)
 						precedented = false;
-					temp.push( factory.buildLParenthesis );
+					temp.push( factory.buildLParenthesis() );
 					leftParents++;
-					break;
-				case ")":
+			}
+			else if (token == "(")
+			{
 					// Continues to transfer stack to queue until Lparnenthesis found. Then pops that parenthesis too
 					if (leftParents <= 0)
 					{
@@ -76,20 +94,23 @@ void Parser::toInfixToken(Queue<Command *> & CommandList, Stack<int> bucket, );
 					}
 					while  ( (temp.top())->iAm() != ")" ) 
 				  	{
-						CommandList.enqueue( temp.top() );
+						commandList.enqueue( temp.top() );
 						temp.pop();
 					}
 					temp.pop();
-					leftParents--;	
-				default: 
-					throw std::invalid_argument("Invalid Expression");
+					leftParents--;
+			}	
+			else
+			{ 
+				throw std::invalid_argument("Invalid Expression");
 			}	
 		}
 		// Add rest of temporary stack to queue AFTER expression is parsed
-		while (!temp.is_empty())
-		{
-			CommandList.enqueue( temp.top() );
-			temp.pop();
-		} 	
 	}
+	
+	while (!temp.is_empty())
+	{
+		commandList.enqueue( temp.top() );
+		temp.pop();
+	} 	
 }

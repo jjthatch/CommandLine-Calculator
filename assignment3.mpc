@@ -5,7 +5,7 @@ project (assignment3) {
   install = .
 
   specific (make, gnuace) {
-    compile_flags += -std=c++11 -g
+    compile_flags += -std=c++11 -g -O0
   }
 
   Source_Files {

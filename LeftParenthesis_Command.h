@@ -4,15 +4,15 @@
 #include "Command.h"
 #include <string>
 
-class LeftParenthesis_Command : Command
+class LeftParenthesis_Command : public Command
 {
 public:
 	LeftParenthesis_Command() {}
-	std::string iAm() {
+	virtual std::string iAm() {
 		return "(";
 	}
 	void execute() {
-		// NOTHING EXISTS
+		std::cout << "Please don't execute the left parenthesis" << std::endl;
 	}
 	
 };

@@ -67,8 +67,8 @@ T Queue<T>::dequeue(void)
   {
     empty_ = true;
   }
-   T temp = (outbound_ - 1) % max_size_;
-   return arr_[temp];
+   T temp = arr_[ (outbound_ - 1) % max_size_ ];
+   return temp;
 }
 
 /// Checks if queue is empty
