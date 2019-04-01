@@ -26,6 +26,9 @@ void Parser::toPostfix(Queue<Command *> & commandList, Stack<int> & bucket, std:
 	
 	// Temporary Stack to temporarily store operators
 	Stack<Command *> temp;
+
+	// Used for swapping if "-" is before a higher precedence operator
+	int tempstate = 0;
  
 	// Input from argument transformed into stringstream to be tokenized
 	std::istringstream stream(input);
@@ -40,10 +43,17 @@ void Parser::toPostfix(Queue<Command *> & commandList, Stack<int> & bucket, std:
 		{
 			int tempInt = std::stoi(token); 
 			commandList.enqueue( factory.buildNumber(bucket, tempInt) );
-			if (precedented == true) 
+			if ( (precedented == true)) 
 			{
 				commandList.enqueue( temp.top() );
 				temp.pop();
+				precedented == false;
+			}
+			if (tempstate == 2) 
+			{
+				commandList.enqueue( temp.top() );
+				temp.pop();
+				tempstate = 0;
 			}
 		}
 
@@ -55,23 +65,55 @@ void Parser::toPostfix(Queue<Command *> & commandList, Stack<int> & bucket, std:
 				temp.push( factory.buildAddition(bucket) );
 			}	
 			else if (token == "-")
-			{
+			{	
+				precedented = true;
+				tempstate = 1;
 				temp.push( factory.buildSubtraction(bucket) );
 			}
 			else if (token == "/")
 			{
-				precedented = true;
-				temp.push( factory.buildDivision(bucket) );
+				if (tempstate == 1)
+				{
+					temp.push( commandList.dequeue() );
+					temp.push( factory.buildDivision(bucket) );
+					tempstate = 2;
+					precedented = true;
+				}
+				else
+				{
+					precedented = true;
+					temp.push( factory.buildDivision(bucket) );
+				}
 			}
 			else if (token == "*")
 			{
-				precedented = true;
-				temp.push( factory.buildMultiplication(bucket) );
+				if (tempstate == 1)
+				{
+					temp.push( commandList.dequeue() );
+					temp.push( factory.buildMultiplication(bucket) );
+					tempstate = 2;
+					precedented = true;
+				}
+				else
+				{
+					precedented = true;
+					temp.push( factory.buildMultiplication(bucket) );
+				}
 			}
 			else if (token == "%")
 			{
-				precedented = true;
-				temp.push( factory.buildModulus(bucket) );
+				if (tempstate == 1)
+				{
+					temp.push( commandList.dequeue() );
+					temp.push( factory.buildModulus(bucket) );
+					tempstate = 2;
+					precedented = true;
+				}
+				else
+				{
+					precedented = true;
+					temp.push( factory.buildModulus(bucket) );
+				}
 			}
 			else if (token == "(")
 			{
