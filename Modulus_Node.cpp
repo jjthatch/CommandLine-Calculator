@@ -1,6 +1,7 @@
-#include "Modulus_Code.h"
+#include "Modulus_Node.h"
+#include "Expr_Visitor.h"
 
-void Modulus_Node::accept(Expr_Visitor & v);
+void Modulus_Node::accept(Expr_Visitor & v)
 {
-	v.visitModulus(this);
-{
+	v.visitModulus(*this);
+}

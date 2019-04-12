@@ -13,7 +13,7 @@ protected:
 	// Data
 	Expr_Node * left;
 	Expr_Node * right;
-}
+};
 
 
 #endif 

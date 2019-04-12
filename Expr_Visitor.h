@@ -1,7 +1,7 @@
 #ifndef EXPRESSION_VISITOR
 #define EXPRESSION_VISITOR
 
-#include "Stack.h"
+class Expr_Node;
 
 class Expr_Visitor
 {
@@ -18,6 +18,6 @@ public:
 	virtual void visitModulus(const Expr_Node & node) = 0;
 	virtual void visitNumber(const Expr_Node & node) = 0;
 
-}
+};
 
 #endif

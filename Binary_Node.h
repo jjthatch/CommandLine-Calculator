@@ -12,7 +12,7 @@ public:
 	Binary_Node();
 	virtual ~Binary_Node();
 	// Methods
-	virtual void Accept(Visitor & v) = 0;
-}
+	virtual void accept(Expr_Visitor & v) = 0;
+};
 
 #endif

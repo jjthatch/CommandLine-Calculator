@@ -1,12 +1,5 @@
 #include "Expr_Tree_Visitor"
 
-// Links in all concrete node files here
-#include "Addition_Node"
-#include "Subtraction_Node"
-#include "Multiplication_Node"
-#include "Division_Node"
-#include "Modulus_Node"
-#include "Number_Node"
 
 void Expr_Tree_Visitor::visitAddition(const Expr_Node & node)
 {

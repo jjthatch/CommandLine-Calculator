@@ -1,6 +1,7 @@
-#include "Subtraction_Node.cpp"
+#include "Subtraction_Node.h"
+#include "Expr_Visitor.h"
 
 void Subtraction_Node::accept(Expr_Visitor & v)
 {
-	v.visitSubtraction(this);	
+	v.visitSubtraction(*this);	
 }
