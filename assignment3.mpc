@@ -9,6 +9,7 @@ project (assignment3) {
   }
 
   Source_Files {
+	Expr_Node.cpp
   	driver.cpp
 	Addition_Node.cpp
 	Subtraction_Node.cpp
@@ -16,7 +17,6 @@ project (assignment3) {
 	Division_Node.cpp
 	Modulus_Node.cpp
 	Number_Node.cpp
-	Expr_Visitor.cpp
 	Expr_Tree_Visitor.cpp
 	Queue.cpp
 	Stack.cpp
@@ -25,6 +25,7 @@ project (assignment3) {
   }
 
   Header_Files {
+	Expr_Node.h
   	Addition_Node.h
 	Subtraction_Node.h
 	Multiplication_Node.h
@@ -36,8 +37,5 @@ project (assignment3) {
 	Stack.h
 	Array.h
 	Array_Base.h
-	// inline files
-	Stack.inl
-	Array.inl
   }
 }

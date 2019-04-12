@@ -1,6 +1,8 @@
 #ifndef EXPRESSION_TREE_VISITOR
 #define EXPRESSION_TREE_VISITOR
 
+//#include "Stack.h"
+
 /* STRATEGY:
  * Visitor called on first node, 
  * Visit algorithm applies first order to node tree
@@ -10,14 +12,20 @@
 
 // Links in all concrete node files here
 // Node file will forward declare visitor to prevent circular dependencies
+
+
+/*
 #include "Addition_Node.h"
 #include "Subtraction_Node.h"
 #include "Multiplication_Node.h"
 #include "Division_Node.h"
 #include "Modulus_Node.h"
 #include "Number_Node.h"
+*/
 
-#include "Stack.h"
+
+
+#include "Expr_Visitor.h"
 
 class Expr_Node;
 
@@ -37,7 +45,7 @@ public:
 	void visitNumber(const Expr_Node & node);	
 
 private:
-	Stack<int> result;
+	//Stack<int> result;
 };
 
 

@@ -13,6 +13,7 @@ public:
 	virtual ~Binary_Node();
 	// Methods
 	virtual void accept(Expr_Visitor & v) = 0;
+	Expr_Node * getLeft();
 };
 
 #endif
