@@ -11,11 +11,12 @@
 #include "Binary_Node.h"
 #include "Expr_Node.h"
 
-
 // Visitor Pattern Objects
+#include "Expr_Visitor.h"
+#include "Expr_Tree_Visitor.h"
 
 // STD Language includes
-//#include <iostream>
+#include <iostream>
 
 
 // #include "Expr_Visitor"
@@ -24,9 +25,12 @@
 
 int main (int argc, char * argv [])
 {
-	/*
 	Stack<int> working;
 	working.push(1);
 	std::cout << " It compiled! " << std::endl;
-	*/
+
+	Expr_Tree_Visitor visit();
+
+	Binary_Node * add = new Addition_Node();
+	std::cout << add->getPrecedence() << std::endl;
 }

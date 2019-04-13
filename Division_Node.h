@@ -8,7 +8,9 @@ class Expr_Visitor;
 class Division_Node : public Binary_Node
 {
 public:
+	Division_Node();
 	void accept(Expr_Visitor & v);
+	
 };
 
 #endif

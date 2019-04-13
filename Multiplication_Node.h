@@ -8,6 +8,7 @@ class Expr_Visitor;
 class Multiplication_Node : public Binary_Node
 {
 public:
+	Multiplication_Node();
 	void accept(Expr_Visitor & v);
 };
 

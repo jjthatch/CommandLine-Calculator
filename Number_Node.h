@@ -8,7 +8,11 @@ class Expr_Visitor;
 class Number_Node : public Binary_Node
 {
 public:
+	Number_Node(int number);
 	void accept(Expr_Visitor & v);
+	int getNum();
+private:
+	int num;
 };
 
 #endif

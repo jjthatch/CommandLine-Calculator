@@ -13,7 +13,7 @@ project (assignment3) {
   	driver.cpp
   }
 
-  Template_Files {
+  Header_Files {
 	Expr_Node.h
   	Addition_Node.h
 	Subtraction_Node.h
