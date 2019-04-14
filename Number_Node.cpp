@@ -1,7 +1,7 @@
 #include "Number_Node.h"
 #include "Expr_Visitor.h"
 
-Number_Node::NumberNode(int number)
+Number_Node::Number_Node(int number)
 {
 	num = number;
 }

@@ -10,6 +10,7 @@
 #include "Modulus_Node.h"
 #include "Binary_Node.h"
 #include "Expr_Node.h"
+#include "Number_Node.h"
 
 // Visitor Pattern Objects
 #include "Expr_Visitor.h"
@@ -25,9 +26,12 @@
 
 int main (int argc, char * argv [])
 {
-	Stack<int> working;
-	working.push(1);
-	std::cout << working.top() << " is the number one: It compiled! " << std::endl;
+	
+	//Stack<Expr_Node *> node;
+	//node.push( new Number_Node(5) );
+
+
+	std::cout << "It compiled! " << std::endl;
 
 
 }
