@@ -5,6 +5,7 @@
 // I pledge that I have neither given nor receieved any help
 // on this assignment.
 
+#include "Array.h"
 #include <stdexcept>         // for std::out_of_bounds exception
 
 /*
