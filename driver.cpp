@@ -27,10 +27,7 @@ int main (int argc, char * argv [])
 {
 	Stack<int> working;
 	working.push(1);
-	std::cout << " It compiled! " << std::endl;
+	std::cout << working.top() << " is the number one: It compiled! " << std::endl;
 
-	Expr_Tree_Visitor visit();
 
-	Binary_Node * add = new Addition_Node();
-	std::cout << add->getPrecedence() << std::endl;
 }

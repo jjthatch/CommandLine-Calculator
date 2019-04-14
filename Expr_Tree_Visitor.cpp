@@ -66,7 +66,7 @@ void Expr_Tree_Visitor::visitModulus(const Expr_Node & node)
 
 	result.push(left % right);
 }
-void Expr_Tree_Visitor::visitNumber(const Expr_Node & node)
+void Expr_Tree_Visitor::visitNumber(const Number_Node & node)
 {
 	node.getLeft()->accept(*this);
 	node.getRight()->accept(*this);

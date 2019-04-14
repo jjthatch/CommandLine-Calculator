@@ -13,8 +13,8 @@ public:
 	virtual void accept(Expr_Visitor & v) = 0;
 	
 	// Allows visitor to have access to Node pointers
-	Expr_Node * getLeft();
-	Expr_Node * getRight();	
+	Expr_Node * getLeft() const;
+	Expr_Node * getRight() const;	
 protected:
 	// Data
 	Expr_Node * left;

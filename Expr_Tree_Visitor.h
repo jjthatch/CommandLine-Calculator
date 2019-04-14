@@ -36,7 +36,7 @@ public:
 	void visitMultiplication(const Expr_Node & node);
 	void visitDivision(const Expr_Node & node);
 	void visitModulus(const Expr_Node & node);
-	void visitNumber(const Expr_Node & node);	
+	void visitNumber(const Number_Node & node);	
 
 private:
 	Stack<int> result;

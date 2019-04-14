@@ -3,7 +3,6 @@
 void Expr_Tree_Builder::buildAddition()
 {
 	
-	nodeSwap.push(new Addition_Node);
 			
 }
 void Expr_Tree_Builder::buildSubtraction()

@@ -1,7 +1,7 @@
 #include "Division_Node.h"
 #include "Expr_Visitor.h"
 
-Division_Node::DivisionNode()
+Division_Node::Division_Node()
 {
 	this->precedence = 1;
 }

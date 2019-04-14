@@ -10,7 +10,7 @@ void Number_Node::accept(Expr_Visitor & v)
 	v.visitNumber(*this);	
 }
 
-int Number_Node::getNum()
+int Number_Node::getNum() const
 {
 	return num;
 }
