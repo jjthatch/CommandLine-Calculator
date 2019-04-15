@@ -6,12 +6,12 @@ Expr_Node::Expr_Node()
 Expr_Node::~Expr_Node()
 {}
 
-Expr_Node * Expr_Node::getLeft() const
+void Expr_Node::setLeft(Expr_Node * node)
 {
-	return left;
+	left = node;
 }
 
-Expr_Node * Expr_Node::getRight() const
+void Expr_Node::setRight(Expr_Node * node)
 {
-	return right;
+	right = node;
 }

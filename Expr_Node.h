@@ -11,16 +11,16 @@ public:
 	virtual ~ Expr_Node();
 	// Methods
 	virtual void accept(Expr_Visitor & v) = 0;
+	virtual int getPrecedence() = 0; 
 	
 	// Allows visitor to have access to Node pointers
-	Expr_Node * getLeft() const;
-	Expr_Node * getRight() const;	
+	void setLeft(Expr_Node * node);
+	void setRight(Expr_Node * node);	
 protected:
 	// Data
+	int precedence;  // THIS IS ALL THAT MAKES SENSE TO ME :( 
 	Expr_Node * left;
 	Expr_Node * right;
-	int precedence;
 };
-
 
 #endif 
