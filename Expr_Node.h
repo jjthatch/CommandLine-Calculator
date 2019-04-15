@@ -7,8 +7,8 @@ class Expr_Node
 {
 public:
 	// Construction
-	Expr_Node();
-	virtual ~Expr_Node();
+	Expr_Node();	
+	virtual ~ Expr_Node();
 	// Methods
 	virtual void accept(Expr_Visitor & v) = 0;
 	

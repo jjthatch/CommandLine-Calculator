@@ -1,3 +1,11 @@
+// Node file will forward declare visitor to prevent circular dependencies
+#include "Addition_Node.h"
+#include "Subtraction_Node.h"
+#include "Multiplication_Node.h"
+#include "Division_Node.h"
+#include "Modulus_Node.h"
+#include "Number_Node.h"
+
 #include "Expr_Tree_Visitor.h"
 
 

@@ -2,6 +2,8 @@
 #include "Expr_Visitor.h"
 
 
+Addition_Node::~Addition_Node()
+{}
 Addition_Node::Addition_Node()
 {
 	this->precedence = 0;
