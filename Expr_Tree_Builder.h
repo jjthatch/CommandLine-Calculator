@@ -15,9 +15,12 @@ public:
 	void buildDivision();
 	void buildModulus();
 	void buildNumber(int num);
+	void complete();
 private:
 	Stack<Expr_Node *> postfix;
-	Stack<Expr_Node *> tempSwap;		
+	Stack<Expr_Node *> tempStack;
+	Expr_Node * inboundNode;
+	Expr_Node * swap;		
 };
 
 #endif

@@ -9,7 +9,8 @@ public:
 	virtual void buildMultiplication() = 0;
 	virtual void buildDivision() = 0;
 	virtual void buildModulus() = 0;
-	virtual void buildNumber() = 0;	
+	virtual void buildNumber() = 0;
+	virtual void complete() = 0;  // Architect tells builders that nothing more is to be ordered	
 private:
 };
 
