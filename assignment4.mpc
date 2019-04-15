@@ -1,4 +1,4 @@
-// $Id: assignment3.mpc 378 2010-02-07 22:09:38Z hillj $
+// $Id: assignment4.mpc 378 2010-02-07 22:09:38Z hillj $
 
 project (assignment4) {
   exename = assignment4
@@ -10,6 +10,7 @@ project (assignment4) {
 
   Source_Files {
   	driver.cpp
+	// composite pattern
 	Expr_Node.cpp
 	Binary_Node.cpp
 	Addition_Node.cpp
@@ -17,6 +18,9 @@ project (assignment4) {
 	Multiplication_Node.cpp
 	Division_Node.cpp
 	Modulus_Node.cpp
+	Number_Node.cpp
+	// builder pattern
+	Expr_Tree_Builder.cpp	
   }
 
   Template_Files {
