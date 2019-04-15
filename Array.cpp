@@ -117,6 +117,4 @@ void Array <T>::resize (size_t new_size)
 //
 // shrink
 //
-  void shrink () {
-
-  }
+//  void shrink () {}
