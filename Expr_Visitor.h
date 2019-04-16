@@ -2,6 +2,7 @@
 #define EXPRESSION_VISITOR
 
 class Expr_Node;
+class Number_Node;
 
 class Expr_Visitor
 {
