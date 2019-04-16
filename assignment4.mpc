@@ -10,7 +10,7 @@ project (assignment4) {
 
   Source_Files {
   	driver.cpp
-	// composite pattern
+	
 	Expr_Node.cpp
 	Binary_Node.cpp
 	Addition_Node.cpp
@@ -19,8 +19,8 @@ project (assignment4) {
 	Division_Node.cpp
 	Modulus_Node.cpp
 	Number_Node.cpp
-	// builder pattern
-	Expr_Tree_Builder.cpp	
+	Expr_Tree_Builder.cpp
+	Expr_Tree_Visitor.cpp	
   }
 
   Template_Files {

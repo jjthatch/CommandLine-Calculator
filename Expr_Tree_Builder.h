@@ -16,6 +16,7 @@ public:
 	void buildModulus();
 	void buildNumber(int num);
 	void complete();
+	Expr_Node & getRoot();
 private:
 	Stack<Expr_Node *> postfix;
 	Stack<Expr_Node *> tempStack;

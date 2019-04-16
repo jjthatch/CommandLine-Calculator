@@ -3,7 +3,6 @@
 #include "Stack.h"
 #include "Queue.h"
 
-
 // Composite Pattern Objects
 #include "Division_Node.h"
 #include "Addition_Node.h"
@@ -14,26 +13,39 @@
 #include "Expr_Node.h"
 #include "Number_Node.h"
 
-
 // Visitor Pattern Objects
 #include "Expr_Visitor.h"
 #include "Expr_Tree_Visitor.h"
+
+// Builder Pattern Objects
+#include "Expr_Builder.h"
+#include "Expr_Tree_Builder.h"
 
 // STD Language includes
 #include <iostream>
 
 
-// #include "Expr_Visitor"
-// #include "Expr_Tree_Visitor"
-
-
 int main (int argc, char * argv [])
 {
-	
+	// Some node test	
 	Stack<Expr_Node *> node;
 	Expr_Node * noodles = new Addition_Node();
 	
-	//std::cout << "Noodles precedence is " << noodles->getPrecedence() << std::endl;
+	// Builder Pattern Test
+	Expr_Tree_Builder bob;
+	bob.buildNumber(5);
+	bob.buildAddition();
+	bob.buildNumber(4);
+	bob.complete();			
+
+	// Visitor visits bobs tree
+	Expr_Tree_Visitor visit;
+
+	// Tree is visited and result is built		
+	Expr_Node & temp = bob.getRoot();
+	temp.accept(visit);
+		
+	//std::cout << "Result it " << visit.getResult() << std::endl;
 	std::cout << "It compiled! " << std::endl;
 
 

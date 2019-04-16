@@ -26,6 +26,7 @@ public:
 	~Expr_Tree_Visitor();
 
 	// Methods
+	int getResult();
 	void visitAddition(const Expr_Node & node);
 	void visitSubtraction(const Expr_Node & node);
 	void visitMultiplication(const Expr_Node & node);

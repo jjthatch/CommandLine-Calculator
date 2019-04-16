@@ -8,32 +8,36 @@
 #include "Modulus_Node.h"
 #include "Number_Node.h"
 
+// Error catching
+#include <stdexcept>
+Expr_Node & Expr_Tree_Builder::getRoot()
+{
+	return *( postfix.top() );
+}
 void Expr_Tree_Builder::buildAddition()
 {
 	inboundNode = new Addition_Node();
 
-	// Compare precedences and continues to go down
-	while (inboundNode->getPrecedence() <= tempStack.top()->getPrecedence())
-	{
-		// Pops off a swap node from the temp stack then attaches children to it from postfix
-		// Finally, it is pushed onto postfix stack.
-		swap = tempStack.top();
-		tempStack.pop(); 
-		swap->setRight( postfix.top() );
-		postfix.pop();
-		swap->setLeft( postfix.top() );
-		postfix.pop();
-		postfix.push(swap);			
-	}
-				
-	if (tempStack.is_empty())
-	{
+	try {	
+		while (inboundNode->getPrecedence() <= tempStack.top()->getPrecedence())
+		{
+			// Pops off a swap node from the temp stack then attaches children to it from postfix
+			// Finally, it is pushed onto postfix stack.
+			swap = tempStack.top();
+			tempStack.pop(); 
+			swap->setRight( postfix.top() );
+			postfix.pop();
+			swap->setLeft( postfix.top() );
+			postfix.pop();			
+			postfix.push(swap);			
+		}
+	} catch (std::exception& e) {			
 		tempStack.push(inboundNode);
 	}
-	else if (inboundNode->getPrecedence() > tempStack.top()->getPrecedence()) 
+	if (inboundNode ->getPrecedence() > tempStack.top()->getPrecedence())
 	{
 		tempStack.push(inboundNode);
-	}
+	}	
 }
 void Expr_Tree_Builder::buildSubtraction()
 {
@@ -64,25 +68,24 @@ void Expr_Tree_Builder::buildSubtraction()
 void Expr_Tree_Builder::buildMultiplication()
 {
 	inboundNode = new Multiplication_Node();
-	
-	while (inboundNode->getPrecedence() <= tempStack.top()->getPrecedence())
-	{
-		// Pops off a swap node from the temp stack then attaches children to it from postfix
-		// Finally, it is pushed onto postfix stack.
-		swap = tempStack.top();
-		tempStack.pop(); 
-		swap->setRight( postfix.top() );
-		postfix.pop();
-		swap->setLeft( postfix.top() );
-		postfix.pop();			
-		postfix.push(swap);			
-	}
-				
-	if (tempStack.is_empty())
-	{
+
+	try {	
+		while (inboundNode->getPrecedence() <= tempStack.top()->getPrecedence())
+		{
+			// Pops off a swap node from the temp stack then attaches children to it from postfix
+			// Finally, it is pushed onto postfix stack.
+			swap = tempStack.top();
+			tempStack.pop(); 
+			swap->setRight( postfix.top() );
+			postfix.pop();
+			swap->setLeft( postfix.top() );
+			postfix.pop();			
+			postfix.push(swap);			
+		}
+	} catch (std::exception& e) {			
 		tempStack.push(inboundNode);
 	}
-	else if (inboundNode ->getPrecedence() > tempStack.top()->getPrecedence())
+	if (inboundNode ->getPrecedence() > tempStack.top()->getPrecedence())
 	{
 		tempStack.push(inboundNode);
 	}	
@@ -153,6 +156,6 @@ void Expr_Tree_Builder::complete()
 		postfix.pop();
 		swap->setLeft( postfix.top() );
 		postfix.pop();
-		postfix.push(swap);
 	}
+	postfix.push(swap);
 }
