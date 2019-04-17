@@ -16,8 +16,8 @@ public:
 	// Allows visitor to have access to Node pointers
 	void setLeft(Expr_Node * node);
 	void setRight(Expr_Node * node);
-	Expr_Node & getLeft() const;
-	Expr_Node & getRight() const;	
+	Expr_Node * getLeft() const;
+	Expr_Node * getRight() const;	
 protected:
 	// Data
 	int precedence;  // THIS IS ALL THAT MAKES SENSE TO ME :( 
