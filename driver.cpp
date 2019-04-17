@@ -36,6 +36,12 @@ int main (int argc, char * argv [])
 	bob.buildNumber(5);
 	bob.buildAddition();
 	bob.buildNumber(4);
+	bob.buildSubtraction();
+	bob.buildNumber(3);
+	bob.buildMultiplication();
+	bob.buildNumber(8);
+	bob.buildDivision();
+	bob.buildNumber(3);
 	bob.complete();			
 
 	// Visitor visits bobs tree
@@ -44,6 +50,9 @@ int main (int argc, char * argv [])
 	// Tree is visited and result is built		
 	Expr_Node & temp = bob.getRoot();
 	temp.accept(visit);
+
+	// Print out result
+	std::cout << "The result is " << visit.getResult() << std::endl;
 		
 	//std::cout << "Result it " << visit.getResult() << std::endl;
 	std::cout << "It compiled! " << std::endl;

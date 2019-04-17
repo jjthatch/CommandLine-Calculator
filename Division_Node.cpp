@@ -3,6 +3,8 @@
 
 Division_Node::Division_Node()
 {
+	this->right = nullptr;
+	this->left = nullptr;
 	this->precedence = 1;
 }
 void Division_Node::accept(Expr_Visitor & v)

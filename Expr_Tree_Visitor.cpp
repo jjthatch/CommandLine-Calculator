@@ -17,8 +17,10 @@ int Expr_Tree_Visitor::getResult()
 }
 void Expr_Tree_Visitor::visitAddition(const Expr_Node & node)
 {
-	node.getLeft().accept(*this);
-	node.getRight().accept(*this);
+	if (&node.getLeft() != nullptr)
+		node.getLeft().accept(*this);
+	if (&node.getRight() != nullptr)
+		node.getRight().accept(*this);
 
 	// Take two and call me in the morning
 	int right = result.top();
@@ -31,8 +33,10 @@ void Expr_Tree_Visitor::visitAddition(const Expr_Node & node)
 }
 void Expr_Tree_Visitor::visitSubtraction(const Expr_Node & node)
 {
-	node.getLeft().accept(*this);
-	node.getRight().accept(*this);
+	if (&node.getLeft() != nullptr)
+		node.getLeft().accept(*this);
+	if (&node.getRight() != nullptr)
+		node.getRight().accept(*this);
 	
 	int right = result.top();
 	result.pop();
@@ -43,9 +47,10 @@ void Expr_Tree_Visitor::visitSubtraction(const Expr_Node & node)
 }
 void Expr_Tree_Visitor::visitMultiplication(const Expr_Node & node)
 {
-
-	node.getLeft().accept(*this);
-	node.getRight().accept(*this);
+	if (&node.getLeft() != nullptr)
+		node.getLeft().accept(*this);
+	if (&node.getRight()!= nullptr)
+		node.getRight().accept(*this);
 	
 	int right = result.top();
 	result.pop();
@@ -56,9 +61,10 @@ void Expr_Tree_Visitor::visitMultiplication(const Expr_Node & node)
 }
 void Expr_Tree_Visitor::visitDivision(const Expr_Node & node)
 {
-
-	node.getLeft().accept(*this);
-	node.getRight().accept(*this);
+	if (&node.getLeft() != nullptr)
+		node.getLeft().accept(*this);
+	if (&node.getRight() != nullptr)
+		node.getRight().accept(*this);
 	
 	int right = result.top();
 	result.pop();
@@ -69,9 +75,10 @@ void Expr_Tree_Visitor::visitDivision(const Expr_Node & node)
 }
 void Expr_Tree_Visitor::visitModulus(const Expr_Node & node)
 {
-
-	node.getLeft().accept(*this);
-	node.getRight().accept(*this);
+	if (&node.getLeft() != nullptr)
+		node.getLeft().accept(*this);
+	if (&node.getRight() != nullptr)
+		node.getRight().accept(*this);
 	
 	int right = result.top();
 	result.pop();
@@ -82,8 +89,10 @@ void Expr_Tree_Visitor::visitModulus(const Expr_Node & node)
 }
 void Expr_Tree_Visitor::visitNumber(const Number_Node & node)
 {
-	node.getLeft().accept(*this);
-	node.getRight().accept(*this);
+	if (&node.getLeft() != nullptr)
+		node.getLeft().accept(*this);
+	if (&node.getRight() != nullptr)
+		node.getRight().accept(*this);
 	
 	result.push(node.getNum());
 }
