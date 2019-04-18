@@ -50,6 +50,31 @@ std::string Calculator::parseInfix(std::string infix)
 	// Ensures that Operands and Operators occur in correct order
 	bool operandBefore = false;
 
+	// Parenthesis implemented  by method passing itself substrings contained with first outer layer of parenthesis
+	// Should Throw exceptions if parenthesis are incorrect
+	size_t firstPos;
+	size_t lastPos;
+	std::string subExpr;
+	std::string swap;
+	firstPos = infix.find_first_of("(");
+	if (firstPos != std::string::npos)
+	{
+		lastPos = infix.find_last_of(")");
+		if (lastPos == std::string::npos)
+		{
+			throw std::invalid_argument("Forgot your closing parenthesis, eh friend?");
+		}
+		else
+		{
+			subExpr = infix.substr(firstPos + 2, ( lastPos - firstPos - 3 )  );
+			swap = parseInfix(subExpr);
+			infix.replace( firstPos, (lastPos - firstPos + 1 ), swap );							
+		} 
+	} 
+
+	// TEST CASE
+	std::cout << "Currently, the expression is " << infix << std::endl;
+	 
 	std::istringstream stream(infix);
 	std::string token;
 
@@ -108,10 +133,9 @@ std::string Calculator::parseInfix(std::string infix)
 				operandBefore = true;
 			inttoken = stoi(token);
 			treeBuilder->buildNumber(inttoken);	
-		}
-		
-		else
-				throw std::invalid_argument("Not an operator/operand");
+		}	
+		else 
+			throw std::invalid_argument("Not an operator/operand");
 	}
 	treeBuilder->complete();
 	
