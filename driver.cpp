@@ -21,38 +21,16 @@
 #include "Expr_Builder.h"
 #include "Expr_Tree_Builder.h"
 
+#include "Calculator.h"
+
 // STD Language includes
 #include <iostream>
 
 
 int main (int argc, char * argv [])
 {
-	// Some node test	
-	Stack<Expr_Node *> node;
-	Expr_Node * noodles = new Addition_Node();
-	
-	// Builder Pattern Test
-	Expr_Tree_Builder bob;
-	bob.buildNumber(5);
-	bob.buildAddition();
-	bob.buildNumber(4);
-	bob.buildSubtraction();
-	bob.buildNumber(3);
-	bob.buildMultiplication();
-	bob.buildNumber(8);
-	bob.buildDivision();
-	bob.buildNumber(3);
-	bob.complete();			
-
-	// Visitor visits bobs tree
-	Expr_Tree_Visitor visit;
-
-	// Tree is visited and result is built		
-	Expr_Node & temp = bob.getRoot();
-	temp.accept(visit);
-
-	// Print out result
-	std::cout << "The result is " << visit.getResult() << std::endl;
+	Calculator calculator;
+	calculator.inputInfix();	
 		
 	//std::cout << "Result it " << visit.getResult() << std::endl;
 	std::cout << "It compiled! " << std::endl;
