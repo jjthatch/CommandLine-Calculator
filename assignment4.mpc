@@ -20,7 +20,8 @@ project (assignment4) {
 	Modulus_Node.cpp
 	Number_Node.cpp
 	Expr_Tree_Builder.cpp
-	Expr_Tree_Visitor.cpp	
+	Expr_Tree_Visitor.cpp
+	Calculator.cpp		
   }
 
   Template_Files {

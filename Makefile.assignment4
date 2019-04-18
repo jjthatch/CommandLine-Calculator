@@ -31,8 +31,8 @@ LIBPREFIX     = lib
 LIBSUFFIX     = 
 GENFLAGS      = -O
 LDLIBS        = -ldl $(subst lib,-l,$(sort $(basename $(notdir $(wildcard /usr/lib/librt.so /lib/librt.so))))) -lpthread
-OBJS          = driver$(OBJEXT) Expr_Node$(OBJEXT) Binary_Node$(OBJEXT) Addition_Node$(OBJEXT) Subtraction_Node$(OBJEXT) Multiplication_Node$(OBJEXT) Division_Node$(OBJEXT) Modulus_Node$(OBJEXT) Number_Node$(OBJEXT) Expr_Tree_Builder$(OBJEXT) Expr_Tree_Visitor$(OBJEXT)
-SRC           = driver.cpp Expr_Node.cpp Binary_Node.cpp Addition_Node.cpp Subtraction_Node.cpp Multiplication_Node.cpp Division_Node.cpp Modulus_Node.cpp Number_Node.cpp Expr_Tree_Builder.cpp Expr_Tree_Visitor.cpp
+OBJS          = driver$(OBJEXT) Expr_Node$(OBJEXT) Binary_Node$(OBJEXT) Addition_Node$(OBJEXT) Subtraction_Node$(OBJEXT) Multiplication_Node$(OBJEXT) Division_Node$(OBJEXT) Modulus_Node$(OBJEXT) Number_Node$(OBJEXT) Expr_Tree_Builder$(OBJEXT) Expr_Tree_Visitor$(OBJEXT) Calculator$(OBJEXT)
+SRC           = driver.cpp Expr_Node.cpp Binary_Node.cpp Addition_Node.cpp Subtraction_Node.cpp Multiplication_Node.cpp Division_Node.cpp Modulus_Node.cpp Number_Node.cpp Expr_Tree_Builder.cpp Expr_Tree_Visitor.cpp Calculator.cpp
 LINK.cc       = $(LD) $(LDFLAGS)
 EXPORTFLAGS   = 
 DEPLIBS       = $(foreach lib, , $(foreach libpath, ., $(wildcard $(libpath)/lib$(lib).a)))
@@ -82,6 +82,9 @@ Expr_Tree_Builder$(OBJEXT): Expr_Tree_Builder.cpp
 
 Expr_Tree_Visitor$(OBJEXT): Expr_Tree_Visitor.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) Expr_Tree_Visitor.cpp
+
+Calculator$(OBJEXT): Calculator.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) Calculator.cpp
 
 clean:
 	-$(RM) $(OBJS)
