@@ -1,4 +1,5 @@
 // They looked upon his magnificent presence, their hearts cried out for peace as they became stone
+#include <stdexcept>
 #include "Calculator.h"
 #include <iostream>
 #include <string>
@@ -45,6 +46,7 @@ void Calculator::inputInfix()
 std::string Calculator::parseInfix(std::string infix)
 {
 	int placeholder;
+	int inttoken;
 	// Ensures that Operands and Operators occur in correct order
 	bool operandBefore = false;
 
@@ -60,7 +62,7 @@ std::string Calculator::parseInfix(std::string infix)
 		if (token == "+")
 		{
 			if (operandBefore == false)
-				placeholder = 2 + 2;	
+				throw std::invalid_argument("Operator MUST BE surround by two operands");	
 			else
 				operandBefore = false;
 			treeBuilder->buildAddition();		
@@ -69,15 +71,15 @@ std::string Calculator::parseInfix(std::string infix)
 		{
 			
 			if (operandBefore == false)
-				placeholder = 2 + 2;	
+				throw std::invalid_argument("Operator MUST BE surround by two operands");	
 			else
 				operandBefore = false;
-			treeBuilder->buildAddition();
+			treeBuilder->buildSubtraction();
 		}
 		else if (token == "*")
 		{
 			if (operandBefore == false)
-				placeholder = 2 + 2;	
+				throw std::invalid_argument("Operator MUST BE surround by two operands");
 			else
 				operandBefore = false;
 			treeBuilder->buildMultiplication();
@@ -85,7 +87,7 @@ std::string Calculator::parseInfix(std::string infix)
 		else if (token == "/")
 		{
 			if (operandBefore == false)
-				placeholder = 2 + 2;	
+				throw std::invalid_argument("Operator MUST BE surround by two operands");
 			else
 				operandBefore = false;
 			treeBuilder->buildDivision();
@@ -93,7 +95,7 @@ std::string Calculator::parseInfix(std::string infix)
 		else if (token == "%")
 		{	
 			if (operandBefore == false)
-				placeholder = 2 + 2;	
+				throw std::invalid_argument("Operator MUST BE surround by two operands");
 			else
 				operandBefore = false;
 			treeBuilder->buildModulus();
@@ -101,13 +103,15 @@ std::string Calculator::parseInfix(std::string infix)
 		else if ( isInt(token) )
 		{
 			if ( operandBefore == true )
-				placeholder = 2 + 2;
+				throw std::invalid_argument("Operator MUST BE surround by two operands");
 			else
 				operandBefore = true;
+			inttoken = stoi(token);
+			treeBuilder->buildNumber(inttoken);	
 		}
 		
 		else
-			placeholder = 2 + 2;	
+				throw std::invalid_argument("Not an operator/operand");
 	}
 	treeBuilder->complete();
 	
