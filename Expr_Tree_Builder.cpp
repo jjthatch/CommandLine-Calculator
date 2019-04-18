@@ -1,6 +1,7 @@
 #include "Expr_Tree_Builder.h"
 
 // Composite object inclues
+#include "Expr_Node.h"
 #include "Addition_Node.h"
 #include "Subtraction_Node.h"
 #include "Division_Node.h"
@@ -10,6 +11,13 @@
 
 // Error catching
 #include <stdexcept>
+void Expr_Tree_Builder::resetTree()
+{
+	// Signals deletion of all nodes then resets builder stacks
+	delete postfix.top();
+	postfix.clear();
+	tempStack.clear();
+}
 Expr_Node & Expr_Tree_Builder::getRoot()
 {
 	return *( postfix.top() );

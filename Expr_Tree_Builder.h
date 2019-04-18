@@ -17,6 +17,7 @@ public:
 	void buildNumber(int num);
 	void complete();
 	Expr_Node & getRoot();
+	void resetTree();
 private:
 	Stack<Expr_Node *> postfix;
 	Stack<Expr_Node *> tempStack;
