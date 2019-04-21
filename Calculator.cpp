@@ -46,7 +46,7 @@ void Calculator::inputInfix()
 			result = parseInfix(infix);
 			std::cout << "Result: " << result << std::endl;
 		} catch ( std::exception& s ) {
-			std::cout << "Invalid Expression, please try again!" << std::endl;
+			std::cout << s.what() << std::endl;
 		}
 		
 								
@@ -195,6 +195,14 @@ std::string Calculator::parseInfix(std::string infix)
 				operandBefore = true;
 			inttoken = stoi(token);
 			treeBuilder->buildNumber(inttoken);	
+		}
+		else if ( isMyAlpha(token) )
+		{
+			if (operandBefore == true)
+				throw std::invalid_argument("Operator must be surrounded by two operands");
+			else
+				operandBefore = true;
+			treeBuilder->buildNumber(variables[token]);
 		}	
 		else 
 			throw std::invalid_argument("Not an operator/operand");
