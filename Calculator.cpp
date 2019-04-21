@@ -5,17 +5,26 @@
 #include <string>
 #include <sstream>
 #include "Expr_Node.h"
+#include <set>
 
 Calculator::Calculator()
 {
 	treeBuilder = new Expr_Tree_Builder();
-	treeVisitor = new Expr_Tree_Visitor();	
+	treeVisitor = new Expr_Tree_Visitor();
 }
 
 bool Calculator::isInt(std::string possibleInt)
 {
 	size_t invalidChar = possibleInt.find_first_not_of("1234567890");
 	if (invalidChar == std::string::npos)
+		return true;
+	else
+		return false;	
+}
+bool Calculator::isMyAlpha(std::string possibleVariable)
+{
+	size_t notFound = possibleVariable.find_first_not_of("qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM");
+	if (notFound == std::string::npos)
 		return true;
 	else
 		return false;	
@@ -33,6 +42,7 @@ void Calculator::inputInfix()
 			std::getline(std::cin, infix);
 			if (infix == "quit")
 				return;
+			parseVariables(infix);
 			result = parseInfix(infix);
 			std::cout << "Result: " << result << std::endl;
 		} catch ( std::exception& s ) {
@@ -41,6 +51,58 @@ void Calculator::inputInfix()
 		
 								
 	}		
+}
+
+std::string Calculator::parseVariables(std::string infix)
+{
+	std::set<std::string> variablesTemp;
+	std::istringstream stream(infix);
+	std::string token;
+	size_t found;
+	std::string swap;
+
+	while ( !( stream.eof() ) )
+	{
+		stream >> token;
+		
+		// checks token to see if it could be a variable
+		if ( ( !isInt(token) ) && ( token.length() > 1) )
+		{
+			throw std::invalid_argument("Invalid Variable, Must be a single alpha character.");
+		}
+		else if ( isMyAlpha(token) )
+		{
+			variablesTemp.insert(token);
+			std::cout << token << " was inserted into set." << std::endl;
+		}
+							
+	}
+
+
+	// Now that set is filled up with string variables, the user will define what each variable is, which is then assigned to the map
+	std::cout << "The variables you entered are: ";
+	for (auto var : variablesTemp)
+	{
+		std::cout << var << " ";
+	}	
+	std::cout << std::endl;
+
+	for (auto var : variablesTemp)
+	{
+		while(true)
+		{
+			std::cout << "Type the integer value of " << var << " ." << std::endl;
+			std::getline(std::cin, swap); 
+			if ( isInt(swap) )
+			{
+				variables[var] = stoi(swap);
+				std::cout << "Variable: " << var << " mapped to value: " << swap << std::endl;
+				break;	
+			}
+			else
+				std::cout << "You must enter an integer for your variable!" << std::endl;
+		}
+	}
 }
 
 std::string Calculator::parseInfix(std::string infix)
