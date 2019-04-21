@@ -71,6 +71,9 @@ void Expr_Tree_Visitor::visitDivision(const Expr_Node & node)
 	int left = result.top();
 	result.pop();
 
+	if (right == 0 )
+		throw std::invalid_argument("You tried to DIVIDE BY ZERO, ARE YOU SERIOUS?");
+
 	result.push(left / right);
 }
 void Expr_Tree_Visitor::visitModulus(const Expr_Node & node)
