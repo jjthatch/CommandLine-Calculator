@@ -2,6 +2,7 @@
 #define EXPRESSION_VISITOR
 
 class Expr_Node;
+class Number_Node;
 
 class Expr_Visitor
 {
@@ -16,7 +17,7 @@ public:
 	virtual void visitMultiplication(const Expr_Node & node) = 0;
 	virtual void visitDivision(const Expr_Node & node) = 0;
 	virtual void visitModulus(const Expr_Node & node) = 0;
-	virtual void visitNumber(const Expr_Node & node) = 0;
+	virtual void visitNumber(const Number_Node & node) = 0;
 
 };
 

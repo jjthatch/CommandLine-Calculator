@@ -11,17 +11,12 @@
  */
 
 // Links in all concrete node files here
-// Node file will forward declare visitor to prevent circular dependencies
-#include "Addition_Node.h"
-#include "Subtraction_Node.h"
-#include "Multiplication_Node.h"
-#include "Division_Node.h"
-#include "Modulus_Node.h"
-#include "Number_Node.h"
+
 
 #include "Expr_Visitor.h"
 
 class Expr_Node;
+class Number_Node;
 
 class Expr_Tree_Visitor : public Expr_Visitor
 {
@@ -31,12 +26,13 @@ public:
 	~Expr_Tree_Visitor();
 
 	// Methods
+	int getResult();
 	void visitAddition(const Expr_Node & node);
 	void visitSubtraction(const Expr_Node & node);
 	void visitMultiplication(const Expr_Node & node);
 	void visitDivision(const Expr_Node & node);
 	void visitModulus(const Expr_Node & node);
-	void visitNumber(const Expr_Node & node);	
+	void visitNumber(const Number_Node & node);	
 
 private:
 	Stack<int> result;

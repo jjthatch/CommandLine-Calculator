@@ -7,6 +7,7 @@ class Expr_Visitor;
 
 class Modulus_Node : public Binary_Node
 {
+public:
 	Modulus_Node();
 	void accept(Expr_Visitor & v);
 };

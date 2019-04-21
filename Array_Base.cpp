@@ -1,5 +1,5 @@
 #include <stdexcept>
-
+#include "Array_Base.h"
 /*
   CONSTRUCTORS
 */

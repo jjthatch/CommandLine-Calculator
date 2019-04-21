@@ -4,13 +4,14 @@
 class Expr_Builder
 {
 public:
-	void buildAddition() = 0;
-	void buildSubtraction() = 0;
-	void buildMultiplication() = 0;
-	void buildDivision() = 0;
-	void buildModulus() = 0;
-	void buildNumber() = 0;	
+	virtual void buildAddition() = 0;
+	virtual void buildSubtraction() = 0;
+	virtual void buildMultiplication() = 0;
+	virtual void buildDivision() = 0;
+	virtual void buildModulus() = 0;
+	virtual void buildNumber(int num) = 0;
+	virtual void complete() = 0;  // Architect tells builders that nothing more is to be ordered	
 private:
-}
+};
 
 #endif

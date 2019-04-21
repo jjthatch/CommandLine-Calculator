@@ -1,4 +1,5 @@
 // Container structures
+#include "Array_Base.h"
 #include "Stack.h"
 #include "Queue.h"
 
@@ -10,27 +11,29 @@
 #include "Modulus_Node.h"
 #include "Binary_Node.h"
 #include "Expr_Node.h"
+#include "Number_Node.h"
 
 // Visitor Pattern Objects
 #include "Expr_Visitor.h"
 #include "Expr_Tree_Visitor.h"
 
+// Builder Pattern Objects
+#include "Expr_Builder.h"
+#include "Expr_Tree_Builder.h"
+
+#include "Calculator.h"
+
 // STD Language includes
 #include <iostream>
 
 
-// #include "Expr_Visitor"
-// #include "Expr_Tree_Visitor"
-
-
 int main (int argc, char * argv [])
 {
-	Stack<int> working;
-	working.push(1);
-	std::cout << " It compiled! " << std::endl;
+	Calculator calculator;
+	calculator.inputInfix();	
+		
+	//std::cout << "Result it " << visit.getResult() << std::endl;
+	std::cout << "It compiled! " << std::endl;
 
-	Expr_Tree_Visitor visit();
 
-	Binary_Node * add = new Addition_Node();
-	std::cout << add->getPrecedence() << std::endl;
 }

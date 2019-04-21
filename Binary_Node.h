@@ -7,11 +7,11 @@ class Expr_Visitor;
 
 class Binary_Node : public Expr_Node
 {
-public:
-	// Construction
+public:		
+	// Methods
 	Binary_Node();
 	virtual ~Binary_Node();
-	// Methods
+
 	virtual void accept(Expr_Visitor & v) = 0;
 	int getPrecedence();
 };

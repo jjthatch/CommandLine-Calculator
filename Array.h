@@ -75,7 +75,7 @@ public:
   void resize (size_t new_size);
 
   /// Shrink the array to reclaim unused space.
-  void shrink ();
+  //void shrink ();
 
 
 private:

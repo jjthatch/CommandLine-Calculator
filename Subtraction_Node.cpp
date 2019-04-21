@@ -3,6 +3,8 @@
 
 Subtraction_Node::Subtraction_Node()
 {
+	this->right = nullptr;
+	this->left = nullptr;
 	this->precedence = 0;	
 }
 

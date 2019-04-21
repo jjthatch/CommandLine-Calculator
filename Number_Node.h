@@ -10,7 +10,7 @@ class Number_Node : public Binary_Node
 public:
 	Number_Node(int number);
 	void accept(Expr_Visitor & v);
-	int getNum();
+	int getNum() const;
 private:
 	int num;
 };

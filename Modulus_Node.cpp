@@ -3,6 +3,8 @@
 
 Modulus_Node::Modulus_Node()
 {
+	this->left = nullptr;
+	this->right = nullptr;
 	this->precedence = 1;
 }
 
