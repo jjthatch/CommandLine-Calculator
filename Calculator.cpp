@@ -73,7 +73,6 @@ std::string Calculator::parseVariables(std::string infix)
 		else if ( isMyAlpha(token) )
 		{
 			variablesTemp.insert(token);
-			std::cout << token << " was inserted into set." << std::endl;
 		}
 							
 	}
@@ -134,8 +133,6 @@ std::string Calculator::parseInfix(std::string infix)
 		} 
 	} 
 
-	// TEST CASE
-	std::cout << "Currently, the expression is " << infix << std::endl;
 	 
 	std::istringstream stream(infix);
 	std::string token;
