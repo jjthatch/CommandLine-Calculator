@@ -79,7 +79,6 @@ std::string Calculator::parseVariables(std::string infix)
 
 
 	// Now that set is filled up with string variables, the user will define what each variable is, which is then assigned to the map
-	std::cout << "The variables you entered are: ";
 	for (auto var : variablesTemp)
 	{
 		std::cout << var << " ";
@@ -95,7 +94,7 @@ std::string Calculator::parseVariables(std::string infix)
 			if ( isInt(swap) )
 			{
 				variables[var] = stoi(swap);
-				std::cout << "Variable: " << var << " mapped to value: " << swap << std::endl;
+				// std::cout << "Variable: " << var << " mapped to value: " << swap << std::endl;
 				break;	
 			}
 			else
