@@ -8,6 +8,7 @@
 # Usage
  * Compiles with make. Run file named assignment4 to boot program.
  * This calculator uses basic operators " +, -, *, /, % " , operands, and parenthesis.
+ * Alphabetica characters (a-z, A-Z) can be used in the initial equation. The program will ask user to define before solving.
  * The calculator cannot solve for any variables.
  * Program will ask user to define all variables typed initially.
  * All operators, operands, and parenthesis MUST BE seperated by spaces.
