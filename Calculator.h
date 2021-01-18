@@ -16,7 +16,7 @@ class Calculator
 public:
 	Calculator();
 	void inputInfix();
-	std::string parseVariables(std::string infix);
+	void parseVariables(std::string infix);
 	std::string parseInfix(std::string infix);
 	bool isInt(std::string possibleInt);
 	bool isMyAlpha(std::string possibleVariable);

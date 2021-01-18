@@ -53,14 +53,17 @@ void Calculator::inputInfix()
 	}		
 }
 
-std::string Calculator::parseVariables(std::string infix)
+void Calculator::parseVariables(std::string infix)
 {
 	std::set<std::string> variablesTemp;
 	std::istringstream stream(infix);
 	std::string token;
 	size_t found;
 	std::string swap;
+	bool var_exists = false;
 
+	// The user inputted math expression will be scanned one token at a time.
+	// A token can be a variable
 	while ( !( stream.eof() ) )
 	{
 		stream >> token;
@@ -73,17 +76,21 @@ std::string Calculator::parseVariables(std::string infix)
 		else if ( isMyAlpha(token) )
 		{
 			variablesTemp.insert(token);
+			var_exists = true;
 		}
 							
 	}
 
-
+    // Given no variables found.
+    if (!var_exists) {
+        return;
+    }
 	// Now that set is filled up with string variables, the user will define what each variable is, which is then assigned to the map
 	for (auto var : variablesTemp)
 	{
 		std::cout << var << " ";
 	}	
-	std::cout << std::endl;
+	std::cout << std::endl;≤
 
 	for (auto var : variablesTemp)
 	{
