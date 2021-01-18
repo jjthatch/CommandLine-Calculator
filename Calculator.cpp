@@ -90,7 +90,7 @@ void Calculator::parseVariables(std::string infix)
 	{
 		std::cout << var << " ";
 	}	
-	std::cout << std::endl;≤
+	std::cout << std::endl;
 
 	for (auto var : variablesTemp)
 	{
