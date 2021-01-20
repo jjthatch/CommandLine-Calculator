@@ -7,7 +7,8 @@ class Expr_Node
 {
 public:
 	// Construction
-	Expr_Node();	
+	Expr_Node();
+	// Destructor is virtual as the C++ compiler needs to be told that there is subclass data that it needs to find and destruct!
 	virtual ~ Expr_Node();
 	// Methods
 	virtual void accept(Expr_Visitor & v) = 0;
@@ -20,7 +21,7 @@ public:
 	Expr_Node * getRight() const;	
 protected:
 	// Data
-	int precedence;  // THIS IS ALL THAT MAKES SENSE TO ME :( 
+	int precedence;
 	Expr_Node * left;
 	Expr_Node * right;
 };
