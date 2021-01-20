@@ -13,3 +13,6 @@
  * Program will ask user to define all variables typed initially.
  * All operators, operands, and parenthesis MUST BE seperated by spaces.
  
+ # Diagrams
+ ![GitHub Logo](/Diagrams/command_calc.png)
+ 
